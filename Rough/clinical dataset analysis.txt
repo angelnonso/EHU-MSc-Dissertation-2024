@@ -1,0 +1,637 @@
+1 Chiu et al. [96] 2019 17 IG DT ROC 96.00 93.00 92.00 
+ - NMD-12: A new machine-learning derived screening instrument to detect mild cognitive impairment and dementia - 
+(NMD-12 - Questionnaire tool for detecting MCI and Dementia) N/A
+
+Regarding feature selection, the paper mentions that feature selection based on information gain was performed to rank the contribution of the 45 items corresponding to patient responses. The most important items were then used to build the optimal screening model.
+
+A brief explanation of the feature selection process and the 45 items used in the study
+**Feature Selection Process**
+- **Goal**: To reduce the survey size and identify the most important items for screening mild cognitive impairment (MCI) and dementia.
+- **Method**: Information gain (IG) ranking was used to evaluate the importance of each feature (question) based on its contribution to the classification accuracy.
+- **Outcome**: The top 12 items with the highest IG values were selected to construct the NMD-12 screening model[^3^][3].
+
+**45 Items Corresponding to Patient Responses**
+The questionnaire included:
+- **Memory**: 12 items
+- **Orientation/Visuospatial Functions**: 5 items
+- **Judgment/Executive Functions**: 6 items
+- **Language**: 8 items
+- **Instrumental Activities of Daily Living (IADL)**: 9 items
+- **Basic Activities of Daily Living (BADL)**: 5 items
+-------------------------------
+
+2 Stamate et al. [97] 2018 18 SVM RF k-fold 88.00 94.00 93.00 
+ - A Machine Learning Framework for Predicting Dementia and Mild Cognitive Impairment - (Access to paper restricted)
+-------------------------------
+
+3 Visser et al. [98] 2019 19 XGBoost RF k-fold 85.00 NA NA
+ - A metabolite-based machine learning approach to diagnose Alzheimer-type dementia in blood: Results from the European Medical Information Framework for Alzheimer disease biomarker discovery cohort
+
+Feature Selection: Yes, the paper does mention feature selection. It states that the Relief algorithm was used to select metabolite predictors based on their capability to discriminate between cognitively normal (CN) individuals and those with Alzheimer-type dementia (AD). This method computes the predictors’ importance as the standardized Relief score1. The top 20 ranked predictors were then used for pathway analysis
+-------------------------------
+
+4 Bansal et al. [99] 2018 20 WEKA J48 k-fold 98.66 95.00 81.00
+ - Comparative Analysis of Various Machine Learning Algorithms for Detecting Dementia
+
+The paper does not explicitly list the specific features selected from the OASIS dataset. It mentions that the CFSSubsetEval method was used for feature selection, but it does not detail the exact features chosen. The attributes included in the OASIS dataset are:
+
+Age
+Sex
+Education
+Socioeconomic status
+Mini-mental state examination
+Clinical dementia rating
+Atlas scaling factor
+Estimated total intracranial volume
+Normalized whole-brain volume
+However, the exact subset of these features selected by the CFSSubsetEval method is not specified in the paper.
+-------------------------------
+
+5 Nori et al. [100] 2019 21 Lasso RF AUC 69.30 98.70 16.40
+ - Identifying incident dementia by applying machine learning to a very large administrative claims dataset
+
+Summary of the Paper
+Objective: The study aimed to develop a machine learning model to predict Alzheimer’s disease and related dementias (ADRD) using administrative claims data.
+Dataset: The model was trained on a national de-identified dataset from OptumLabs, containing data from over 125 million patients.
+Features Selected: The top features included diagnosis codes like memory loss, Parkinson’s disease, mild cognitive impairment, and bipolar disorder, as well as pharmacy codes for psychoactive drugs3.
+Feature Selection Method: The Lasso algorithm was used for feature selection, identifying the top 50 predictors for the final model.
+
+The study achieved relatively low accuracy (AUC of 0.693) despite using a large dataset of 125 million patients due to several factors:
+
+Data Sparsity: Many individuals had very few medical codes in their claims, making it difficult to gather enough information for accurate predictions.
+Imbalanced Dataset: The dataset had a small proportion of dementia cases compared to controls, which can lead to misclassification.
+Complexity of Dementia: Dementia has multifactorial causes and varied presentations, making it challenging to predict with high accuracy using claims data alone.
+Coding Variability: Differences in how dementia is coded and diagnosed across different providers and regions can affect model performance.
+-------------------------------
+
+6 Alam et al. [101] 2016 22 high-pass flter RF k-fold 91.50 91.80 95.70
+ - Automated Functional and Behavioral HealthAssessment of Older Adults with Dementia
+
+The paper used data collected from 17 older adults living in a continuing care retirement community in Baltimore. The participants included:
+
+6 with dementia
+3 with mild cognitive impairment
+8 without cognitive impairment
+The data was gathered over a 5-month study period and involved monitoring their daily activities and physiological signals using wearable sensors and smart home technologies.
+The dataset used in the paper consists of data from 17 older adults. While it might seem small, such datasets can still provide valuable insights, especially in specialized studies like this one. Smaller datasets are often used in preliminary research to identify trends and patterns before larger-scale studies are conducted.
+
+Objective: The study aims to improve the automatic assessment of dementia by using physiological and ambient sensors to track daily activities and mental arousal states of older adults1.
+Methodology: The researchers employed signal processing on wearable sensor data (e.g., EDA, PPG, ACC) and machine learning algorithms to assess cognitive impairments and their correlation with functional health decline2.
+Validation: The approach was validated by comparing machine learning and survey-based scores with clinically observed scores among 17 older adults in a retirement community3.
+Findings: The study found that technology-guided automated scores can effectively estimate cognitive health and functional decline in older adults with dementia4.
+-------------------------------
+
+7 Gurevich et al. [102] 2017 23 PCA SVC MCC 89.00 94.00 74.00
+ - Neuropsychological Testing and Machine Learning Distinguish Alzheimer's Disease from Other Causes for Cognitive Impairment
+
+Objective: The study investigates the potential of neuropsychological testing (NPT) combined with machine learning to identify Alzheimer’s Disease (AD) in patients with cognitive impairment1.
+Method: 158 patients were tested using the CERAD-NAB test battery and two new tests. The results were analyzed using a Support Vector Classifier (SVC).
+Findings: The method correctly identified 82% of patients as AD or non-AD, with 89% accuracy in early-stage patients2.
+Conclusion: NPT combined with machine learning shows promise for early and accurate AD diagnosis, potentially improving clinical screening and drug studies.
+
+The dataset features include various neuropsychological test scores from the CERAD-NAB test battery and two additional tests. These tests assess different cognitive functions such as memory, language, and executive function. The specific features likely include:
+
+Memory Tests: Scores from tasks assessing short-term and long-term memory.
+Language Tests: Scores from tasks evaluating language skills, such as naming and verbal fluency.
+Executive Function Tests: Scores from tasks measuring planning, problem-solving, and cognitive flexibility.
+Attention and Concentration Tests: Scores from tasks assessing attention span and concentration.
+Visuospatial Skills Tests: Scores from tasks evaluating the ability to understand and remember spatial relationships between objects.
+These features are used to train the Support Vector Classifier (SVC) to distinguish between Alzheimer’s Disease and non-Alzheimer’s Disease patients.
+
+The study utilized various features from the CERAD-NAB test battery and additional tests for training the machine learning model. However, it is not explicitly stated whether all features were used or if feature selection techniques were applied to choose the most relevant ones. Typically, in such studies, feature selection is often performed to improve model performance and reduce overfitting, but the specific details would be found in the methodology section of the paper
+-------------------------------
+
+8 Karaglani et al. [103] 2020 24 mRNA RF ROC 84.60 NA NA
+ - Accurate Blood-Based Diagnostic Biosignatures for Alzheimer’s Disease via Automated Machine Learning
+
+Objective: The study aimed to develop accurate blood-based diagnostic biosignatures for Alzheimer’s disease (AD) using the AutoML tool JADBIO.
+Methodology: Publicly available multi-omics datasets from AD blood samples were analyzed to create predictive models.
+Findings: Three high-performing biosignatures were identified:
+miRNA-based: AUC 0.975
+mRNA-based: AUC 0.846
+Protein-based: AUC 0.921
+Conclusion: These biosignatures offer potential for minimally invasive, cost-effective diagnostic tests for AD, pending clinical validation.
+
+The study utilized several publicly available datasets, including:
+
+Metabolomic Datasets: ST000046 and ST000433 from Metabolomics Workbench.
+Proteomic Datasets: GSE39087 and GSE29676 from Gene Expression Omnibus (GEO).
+miRNA Transcriptomic Datasets: GSE46579 and GSE120584 from BioDataome and GEO.
+mRNA Transcriptomic Datasets: GSE63060 and GSE63063 from GEO.
+These datasets included molecular profiles and clinical information from Alzheimer’s disease patients and cognitively healthy individuals.
+
+Some areas for improvement mentioned in the study:
+
+External Validation: The study lacks external validation due to the absence of independent datasets with common platforms1.
+Sample Size: The proteomic and metabolomic datasets have low sample numbers, which could affect the robustness of the results.
+Clinical Information: Limited clinical information is available about the patients, such as the stage of Alzheimer’s disease, duration since diagnosis, and type of dementia2.
+Diagnostic Scope: The biosignatures can only differentiate between Alzheimer’s disease and healthy controls, not other types of dementia or disease progression3.
+-------------------------------
+
+9 Ryzhikova et al. [104] 2021 25 GA SVM-DA k-fold 90.30 84.00 84.00
+ - Raman spectroscopy and machine learning for biomedical applications: Alzheimer's disease diagnosis based on the analysis of cerebrospinal fluid
+
+Here are the key points from the first part of the paper:
+
+Raman Spectroscopy & Machine Learning: The study explores using Raman spectroscopy combined with machine learning for diagnosing Alzheimer’s disease (AD) through cerebrospinal fluid (CSF) analysis12.
+Early Diagnosis: Early detection of AD is crucial for effective treatment. Current methods are only efficient at advanced stages.
+CSF Analysis: CSF is ideal for AD diagnostics as it reflects biochemical changes in the brain3. The study used NIR Raman spectroscopy on CSF samples from AD patients and healthy controls45.
+Promising Results: The method achieved 84% sensitivity and specificity, showing potential for accurate, early AD diagnosis. Further validation with larger sample sizes is needed.
+
+Here’s a summary of part 2 of the paper:
+
+Human Skin Characterization: The paper explores the potential of using Raman spectroscopy for characterizing human skin with significantly reduced data1.
+Feature Extraction: It discusses various methods like genetic algorithms and neural networks for feature extraction from unprocessed data2.
+Applications: The techniques are applied in medical disease estimation and diagnosis using different machine learning models.
+
+The study used cerebrospinal fluid (CSF) samples from two groups of subjects:
+
+Alzheimer’s Disease (AD) Patients: 21 patients diagnosed with Alzheimer’s disease.
+Healthy Controls (HC): 16 age-matched individuals without any neurological or psychiatric disorders1.
+These samples were collected and analyzed using Raman spectroscopy combined with machine learning techniques to differentiate between AD and HC subjects.
+
+The dataset used in the study likely includes several features or variables derived from the cerebrospinal fluid (CSF) samples analyzed using Raman spectroscopy. While the exact features aren’t specified, they typically include:
+
+Raman Spectral Data: Intensity values at various wavelengths or Raman shifts.
+Biochemical Markers: Specific peaks corresponding to biochemical compounds like proteins, lipids, and nucleic acids.
+Patient Demographics: Age, gender, and other relevant clinical information.
+Diagnostic Labels: Whether the sample is from an Alzheimer’s disease (AD) patient or a healthy control (HC).
+These features are used to train machine learning models to differentiate between AD patients and healthy controls.
+
+The study recommends the following improvements:
+
+Larger Sample Size: Further validation with a larger number of samples is needed to confirm the method’s reliability1.
+Standardization: Standardized cerebrospinal fluid (CSF) sampling, handling, and storage protocols are essential to ensure consistent results2.
+Pre-analytical Factors: Addressing factors like differences in collection procedures, time between sampling and centrifugation, and the number of freeze/thaw cycles to improve stability and accuracy3.
+Further Investigation: Additional studies to interpret the clinical relevance of identified spectral biomarkers and to refine the machine learning models used for classification.
+-------------------------------
+
+10 Cho and Chen [105] 2012 26 FCM PNNs NA 82.00 NA NA
+ - A Double Layer Dementia Diagnosis System Using Machine Learning Techniques - (Access to paper restricted)
+Here are the key points from the paper:
+
+Objective: The paper proposes a hierarchical double layer structure using multiple machine learning algorithms for early-stage dementia diagnosis1.
+Methodology: Fuzzy cognitive maps (FCM) and probability neural networks (PNNs) are used for initial diagnosis, followed by Bayesian networks (BNs) for final diagnosis2.
+Results: The system achieved an accuracy of 83% using clinical data from Cheng Kung University Hospital.
+References: The paper includes numerous references to previous studies and methodologies related to dementia diagnosis and machine learning.
+-------------------------------
+
+11 Facal et al. [106] 2019 27 ANN RF k-fold 92.00 88.00 88.00
+ - Machine learning approaches to studying the role of cognitive reserve in conversion from mild cognitive impairment to dementia
+
+Here are the key points from the paper:
+
+Objective: The study explores the role of cognitive reserve (CR) in the conversion from mild cognitive impairment (MCI) to dementia using traditional and machine learning (ML) techniques13.
+Methods: 169 participants were divided into control and MCI subgroups4Nine ML classification techniques were used to predict conversion to dementia2.
+Results: The Gradient Boosting Classifier and Random Forest Classifier were the best models, with accuracies of 0.93 and 0.92, respectively. Higher education and vocabulary scores were protective factors.
+Conclusions: ML techniques can effectively predict the risk of MCI converting to dementia, highlighting the protective role of CR2. Further research is needed to refine these predictive models.
+
+The study used a dataset comprising 169 participants aged over 50 years. These participants were divided into a control group and three MCI subgroups based on the Petersen criteria for diagnosis1. The dataset included socio-demographic, health, and cognitive reserve (CR) proxy data collected over a longitudinal study period of about 54 months.
+
+The dataset used in the study titled “Machine Learning Approaches to Studying the Role of Cognitive Reserve in Conversion from Mild Cognitive Impairment to Dementia” includes the following features12:
+
+Socio-demographic data:
+-Age
+-Gender
+-Education level
+Health data:
+-Medical history
+-Current health status
+-Medication usage
+Cognitive reserve (CR) proxy data:
+-Vocabulary scores
+-Years of education
+-Engagement in mentally stimulating activities
+Cognitive assessments:
+-Memory tests
+-Executive function tests
+-Attention and processing speed tests
+
+These features were collected over a longitudinal study period of about 54 months to predict the conversion from mild cognitive impairment (MCI) to dementia using various machine learning techniques.
+
+The dataset used in the study “Machine Learning Approaches to Studying the Role of Cognitive Reserve in Conversion from Mild Cognitive Impairment to Dementia” was sourced from a longitudinal study conducted by the researchers. The dataset includes data from 169 participants.
+-------------------------------
+
+12 Jin et al. [107] 2021 28 NA SVM MCC 96.00 95.00 81.00
+ - Learning From Clinical Consensus Diagnosis in India to Facilitate Automatic Classification of Dementia: Machine Learning Study by Haomiao Jin; Sandy Chien; Erik Meijer; Pranali Khobragade; Jinkook Lee
+
+The study used data from the Harmonized Diagnostic Assessment of Dementia for the Longitudinal Aging Study in India (LASI-DAD). This dataset is the first and only nationally representative study on late-life cognition and dementia in India, involving 4,096 participants. A subsample of 2,528 respondents received a clinical consensus diagnosis of dementia, which was used to develop and evaluate the machine learning models.
+
+The dataset has several key features:
+
+Clinical Data: Includes detailed clinical assessments and diagnoses related to dementia.
+Demographic Information: Contains demographic details of the patients, such as age, gender, and education level.
+Neuropsychological Tests: Results from various neuropsychological tests administered to the patients.
+Imaging Data: Includes brain imaging data, which helps in the analysis and classification of dementia.
+These features collectively contribute to the study’s goal of facilitating automatic classification of dementia using machine learning techniques.
+
+The following key features of the dataset were used to train the ML model:
+
+Demographic Information: Age, gender, and education level of the patients.
+Clinical Assessments: Cognitive test scores, clinical dementia ratings, and other neuropsychological test results.
+Medical History: Information on previous medical conditions, medications, and family history of dementia.
+Imaging Data: MRI and CT scan results, if available.
+These features were crucial in developing a robust model for the automatic classification of dementia.
+
+The study achieved impressive results:
+
+Discriminative Ability: All candidate machine learning models demonstrated outstanding discriminative ability with an Area Under the Receiver Operating Characteristic (AUROC) greater than 0.901.
+Accuracy and Specificity: The models had similar accuracy and specificity, both around 0.951.
+Support Vector Machine (SVM) Model: The SVM model outperformed other models with the highest sensitivity (0.81), F1 score (0.72), and kappa statistic (0.70, indicating substantial agreement). It also had the second highest precision (0.65).
+These results indicate that the SVM model was the most effective in classifying dementia status, showing substantial agreement with the clinical consensus diagnoses
+
+-------------------------------
+
+13 James et al. [108] 2021 29 NA GBT k-fold 92.00 97.00 45.00
+ - Performance of Machine Learning Algorithms for Predicting Progression to Dementia in Memory Clinic Patients by Charlotte James, PhD1,2; Janice M. Ranson, PhD1,2; Richard Everson, PhD
+
+what dataset was used in this study?
+The study used data from the National Alzheimer Coordinating Center (NACC) Uniform Data Set (UDS). This dataset includes memory clinic data collected between September 2005 and February 2015 from 30 Alzheimer Disease Centers in the United States. The data encompasses a wide range of variables, including participant demographics, family history, functional status, behavioral symptoms, neuropsychological test results, and clinical dementia diagnoses.
+
+what are the features of the dataset used in this study?
+The dataset used in this study has several key features:
+Participant Demographics: Includes age, gender, and other sociodemographic characteristics.
+Clinical Measures: Encompasses medical history, physical and neurological examination results, and functional status.
+Neuropsychological Tests: Contains results from various cognitive and behavioral assessments.
+Diagnosis Data: Includes clinical dementia diagnoses and follow-up data to track incident dementia within 2 years.
+These features were used to train machine learning algorithms to predict dementia incidence.
+
+what features from this dataset was used to train the ML model?
+The following features from the dataset were used to train the machine learning models:
+Demographic Information: Age, gender, and education level of the patients.
+Clinical Assessments: Cognitive test scores, clinical dementia ratings, and results from various neuropsychological tests.
+Medical History: Information on previous medical conditions, medications, and family history of dementia.
+Functional Status: Data on the participants’ ability to perform daily activities and their overall functional status.
+Behavioral Symptoms: Information on behavioral and psychological symptoms associated with dementia.
+Imaging Data: MRI and CT scan results, if available.
+These features were crucial in developing accurate machine learning models for predicting the progression to dementia within two years.
+
+what is the result of the model?
+The study found that machine learning algorithms were highly effective in predicting the progression to dementia within two years. Here are the key results:
+Accuracy: The gradient-boosted trees algorithm achieved an overall accuracy of 92%1.
+Sensitivity: The sensitivity of the model was 0.451.
+Specificity: The specificity was 0.971.
+Area Under the Curve (AUC): The model had an AUC of 0.921.
+Additionally, the study found that only six variables were needed for the machine learning algorithms to achieve an accuracy of 91% and an AUC of at least 0.891. These results suggest that machine learning algorithms can be highly effective in predicting dementia progression and could be used to inform clinical decision-making in memory clinics.
+-------------------------------
+
+14 Bougea et al. [109] 2021 30 NA K-NN AUC 91.00 85.73 93.75
+ - A Novel Machine Learning Algorithm Predicts Dementia With Lewy Bodies Versus Parkinson’s Disease Dementia Based on Clinical and Neuropsychological Scores by Anastasia Bougea, MD, PhD, Efthymia Efthymiopoulou, MSc, Ioanna Spanou, MD, MSc, and Panagiotis Zikos, MD, PhD
+
+what dataset was used in this study?
+The study used a dataset comprising 138 patients with probable Parkinson’s Disease Dementia (PDD) and Dementia with Lewy Bodies (DLB). Specifically, there were 78 PDD and 62 DLB subjects1. The data included:
+
+Clinico-demographic characteristics: Gender, age, education, hand dominance, disease duration, and levodopa equivalent daily dose (LEDD)2.
+Motor severity: Evaluated by the Movement Disorders Society-United Parkinson’s Disease Rating Scale (MDS-UPDRS) part III.
+Neuropsychological tests: Mini-Mental State Examination (MMSE), PD-Cognitive Rating Scale (PD-CRS), Brief Visuospatial Memory Test (BVMT-TR), Symbol Digit Written (SDMT), Trail Making Test A and B (TMTA, TMTB), and Wechsler Adult Intelligence Scale (WAIS-V)3.
+This dataset was collected from two neurological clinics between September 2019 and April 2020.
+
+what features from this dataset was used to train the ML model?
+The dataset used to train the machine learning model included the following features:
+
+Clinico-demographic characteristics:
+Gender
+Age
+Education
+Hand dominance
+Disease duration
+Levodopa equivalent daily dose (LEDD)
+Motor severity:
+Movement Disorders Society-United Parkinson’s Disease Rating Scale (MDS-UPDRS) part III
+Neuropsychological tests:
+Mini-Mental State Examination (MMSE)
+PD-Cognitive Rating Scale (PD-CRS)
+Brief Visuospatial Memory Test (BVMT-TR)
+Symbol Digit Modalities Test (SDMT)
+Trail Making Test A (TMTA) and B (TMTB)
+Wechsler Adult Intelligence Scale (WAIS-V)
+These features were used to predict whether patients had Parkinson’s Disease Dementia (PDD) or Dementia with Lewy Bodies (DLB).
+
+what is the result of the model?
+Here are the key findings from the study:
+
+High Accuracy: The K-Nearest Neighbors (K-NN) model achieved 91.2% accuracy, with 96.42% sensitivity and 81% specificity in distinguishing between Dementia with Lewy Bodies (DLB) and Parkinson’s Disease Dementia (PDD).
+Comparison of Models: Other models like logistic regression, Support Vector Machine (SVM), and Naïve Bayes also showed high accuracy, but K-NN performed the best.
+Ensemble Model: An ensemble model combining all individual models achieved 89.74% accuracy, 93.75% sensitivity, and 85.73% specificity1.
+Clinical Utility: The study demonstrated that machine learning can effectively predict DLB and PDD using non-invasive clinical and neuropsychological tests
+
+-------------------------------
+
+15 Salem et al. [110] 2021 31 NA RF ROC 88.00 NA NA - (Partial Access Restriction)
+ - Regression based machine learning model for dementiadiagnosis in a community setting by Fatima Abu Salem, Monique Chaaya, Hiyam Ghannam, Roaa E Al Feel, Khalil El Asmar
+
+what dataset was used in this study?
+The study used data from three community-based surveys conducted in Lebanon as part of a larger dementia cohort study1. The training sample consisted of 802 individuals, while the testing sample included 200 individuals2. The dataset was imbalanced, with 20% positive cases and 80% negative cases.
+
+what are the features of the dataset used in this study?
+The study mentions that the dataset used for training and testing the machine learning models included 20 features/variables. However, the specific features are not listed in the provided text. The dataset was part of three community-based surveys conducted in Lebanon, focusing on dementia diagnosis using the 10/66 one-stage dementia diagnostic algorithm
+
+what features from this dataset was used to train the ML model?
+	
+-------------------------------
+
+16 Garcia-Gutierrez et al. [111] 2022 32 GA DT F1-score 88.00 NA NA (Access Restricted)
+
+-------------------------------
+
+17 Mirzaei and Adeli [112] 2022 33 RF CNN k-fold 95.74 NA NA - https://doi.org/10.1016/j.bspc.2021.103293 (Review paper)
+ - Machine learning techniques for diagnosis of alzheimer disease, mild cognitive disorder, and other types of dementia by Golrokh Mirzaei, and Hojjat Adeli 
+
+what dataset was used in this study?
+The study reviewed several commonly-used datasets for Alzheimer’s disease research:
+
+ADNI (Alzheimer’s Disease Neuroimaging Initiative): Includes MRI and PET images, biological data, cognitive tests, and more1.
+OASIS (Open Access Series of Imaging Studies): Provides longitudinal MRI data for various stages of cognitive decline.
+AIBL (Australian Imaging Biomarkers & Lifestyle Flagship Study of Imaging): Contains MRI and PET data, along with non-imaging data like blood analysis and medical history2.
+These datasets are crucial for training and validating machine learning models in Alzheimer’s disease studies.
+
+what are the features of the dataset used in this study?
+Some common features extracted from Alzheimer’s disease datasets like ADNI, OASIS, and AIBL:
+
+Imaging Features
+MRI (Magnetic Resonance Imaging): Brain volume, cortical thickness, hippocampal volume, white matter hyperintensities.
+PET (Positron Emission Tomography): Amyloid-beta deposition, tau protein accumulation, glucose metabolism.
+Biological Data
+CSF (Cerebrospinal Fluid) Biomarkers: Levels of amyloid-beta, tau, and phosphorylated tau.
+Blood Biomarkers: Inflammatory markers, cholesterol levels, genetic markers (e.g., APOE genotype).
+Cognitive and Clinical Data
+Cognitive Test Scores: Mini-Mental State Examination (MMSE), Alzheimer’s Disease Assessment Scale-Cognitive Subscale (ADAS-Cog).
+Clinical Assessments: Clinical Dementia Rating (CDR), Functional Activities Questionnaire (FAQ).
+Demographic and Lifestyle Data
+Demographics: Age, gender, education level.
+Lifestyle Factors: Physical activity, diet, smoking status.
+These features help researchers understand the progression of Alzheimer’s disease and develop predictive models
+
+what features from this dataset was used to train the ML model?
+The features used from the dataset to train the machine learning model:
+
+MRI and PET Images: These images provide detailed information about brain structures and functions.
+Biological Data: Includes genetics, cognitive tests, cerebrospinal fluid (CSF), and blood data.
+Clinical and Neuropsychological Assessments: Data from cognitive tests and other clinical evaluations.
+These features were used to train models for diagnosing Alzheimer’s disease and other types of dementia.
+-------------------------------
+
+18 Hsiu et al. [113] 2022 34 LDA KNN k-fold 70.32 72.00 68.00
+
+what dataset was used in this study?
+
+what are the features of the dataset used in this study?
+
+what features from this dataset was used to train the ML model?
+
+-------------------------------
+
+19 Shahzad et al. [114] 2022 35 EFA SVM k-fold 71.67 NA 83.33
+
+what dataset was used in this study?
+
+what are the features of the dataset used in this study?
+
+what features from this dataset was used to train the ML model?
+
+-------------------------------
+
+20 Hane et al. [115] 2020 36 NA ML AUC 94.00 98.00 45.00
+
+what dataset was used in this study?
+
+what are the features of the dataset used in this study?
+
+what features from this dataset was used to train the ML model?
+
+-------------------------------
+
+21 Aschwanden et al. [116] 2020 37 NA RF AUC 64.00 NA 67.00
+
+what dataset was used in this study?
+
+what are the features of the dataset used in this study?
+
+what features from this dataset was used to train the ML model?
+
+-------------------------------
+
+22 Ryu et al. [117] 2020 20 HPO XGBoost K-fold 85.61 81.40 77.27
+
+what dataset was used in this study?
+
+what are the features of the dataset used in this study?
+
+what features from this dataset was used to train the ML model?
+
+-------------------------------
+
+23 de Langavant et al. [118] 2018 37 PCA k-mean AUC 91.00 93.30 93.60
+
+what dataset was used in this study?
+
+what are the features of the dataset used in this study?
+
+what features from this dataset was used to train the ML model?
+
+-------------------------------
+
+24 Fouladvand et al. [119] 2019 38 RNN RF F1-score 82.00 44.30 13.00
+
+what dataset was used in this study?
+
+what are the features of the dataset used in this study?
+
+what features from this dataset was used to train the ML model?
+
+-------------------------------
+
+25 Balea-Fernandez et al. [120] 2021 39 GA RF AUC 80.00 71.00 100
+
+what dataset was used in this study?
+
+what are the features of the dataset used in this study?
+
+what features from this dataset was used to train the ML model?
+
+-------------------------------
+
+what dataset was used in this study?
+what are the features of the dataset used in this study?
+what features from this dataset was used to train the ML model?
+what is the result of the model?
+
+
+
+I need to know if all these features were selected when training the machine learning model
+what are the features of this dataset?
+
+
+
+
+NEW PAPER EXPLORATION
+1. - Dementia Prediction Using Machine Learning by Sara Dhakala, Sami Azama, Khan Md. Hasibb, Asif Karima, Mirjam Jonkmana, A S M Farhan Al Haque
+
+https://researchers.cdu.edu.au/files/82388284/1_s2.0_S1877050923004234_main.pdf
+
+The paper uses the OASIS (Open Access Series of Imaging Studies) dataset, specifically the longitudinal MRI data1. This dataset includes:
+
+Subjects: 150 individuals aged 60 to 96, scanned on two or more visits23.
+Categories: 72 nondemented, 64 demented, and 14 who converted from nondemented to demented over time.
+Attributes: Various features including cognitive and demographic data.
+
+The paper selected the following features from the dataset to prepare the machine learning model:
+
+CDR (Clinical Dementia Rating): Measures the severity of dementia.
+MMSE (Mini-Mental State Examination): Assesses cognitive function.
+eTIV (Estimated Total Intracranial Volume): Indicates brain volume.
+Gender: Male or female.
+EDUC (Education Level): Number of years of education.
+SES (Socioeconomic Status): Socioeconomic background.
+These features were chosen based on their relevance to dementia prediction.
+
+The paper suggests several improvements and future directions for dementia prediction using machine learning:
+
+Efficiency and Accuracy: Future research should focus on improving the efficiency and accuracy of the proposed model1.
+Ensemble Techniques: Implementing ensemble techniques and other feature selection and reduction techniques can enhance the model’s performance2.
+Real-time Implementation: Developing the model for real-time application in hospital systems globally.
+Broader Dataset: Expanding the dataset to include more diverse and larger samples to avoid overfitting and bias
+
+2. - Dementia Prediction Using OASIS Data for Alzheimer’s Research by Mr. Rahul B. Diwate, Mr. Ridhya Ghosh, Mr. Rituraj Jha, Mr. Ishu Sagar, and Mr. Saket Kumar Singh 
+
+The paper explores the use of machine learning models to predict dementia using data from the Open Access Series of Imaging Studies (OASIS). Here are the key points:
+
+Objective: The study aims to predict dementia by analyzing longitudinal brain data from the OASIS dataset.
+Methods: Various machine learning models, including Multilayer Perceptron and Decision Tree, were employed. These models were evaluated based on their accuracy and recall.
+Findings: The Multilayer Perceptron and Decision Tree models achieved an accuracy of 83.9% and recall rates of 83.6% and 80.0%, respectively1.
+Conclusion: The study demonstrates that machine learning models can effectively predict dementia using social and biological data, without the need for brain MRI images.
+This research highlights the potential of machine learning in early dementia diagnosis, which can significantly impact patient care and treatment outcomes.
+Dataset: OASIS longitudinal dataset.
+
+META DATA 
+The dataset comprises of 15 columns - Subject ID, MRI ID, Group, Visit, MR Delay, M/F, Hand, Age, EDUC (education years), SES (socio economic status), MMSE (mini mental state examination), CDR (clinical dementia ratio), eTIV (estimated Total Intracranial Volume), nWBV (normalized whole brain volume), ASF (Atlas Scaling Factor). 
+A total of 150 subjects’ data were collected resulting in 373 unique values.
+
+DATA CLEANING 
+The dataset had a total of 21 null values: 19 in SES [socioeconomic status] and 2 in MMSE [mini mental state examination]. Since both aren't sensitive medical data, the null values were replaced by the median of the respective data. Some features were removed from the data since they played no role in predicting the target variable. These were: 
+a) Subject ID 
+b) MRI ID 
+c) Visit 
+d) MR Delay
+
+FEATURE SELECTION 
+The dataset consists of 15 features out of which 4 were removed during data cleaning. These features include Subject ID, MRI ID , Visit and MR Delay. All these features provide no information which may be useful for prediction of dementia as these are used for patient identification and equipment error and hence were removed. A correlation map was used to determine the correlation between the other features.
+
+TRAIN - TEST SPLIT 
+The data was split into 261 training samples and 112 test samples.
+
+LIMITATIONS
+The study “Dementia Prediction Using OASIS Data for Alzheimer’s Research” highlights several limitations and areas for improvement:
+Complexity of Machine Learning Models: While machine learning models like Multilayer Perceptron and Decision Tree showed promising results, they often struggle with the complexity of analyzing numeric biological and social data1.
+Need for Enhanced Methodological Rigour: Many predictive modeling studies lack rigorous methodologies, leading to a high risk of bias2. Future research should focus on improving the methodological rigor and conducting external validation of the models.
+Data Limitations: The reliance on specific datasets like OASIS may limit the generalizability of the findings. Expanding the dataset to include more diverse populations could improve the robustness of the models1.
+Integration of Multimodal Data: Future research could benefit from integrating various types of data, such as genetic, clinical, and lifestyle information, to enhance the accuracy of dementia predictions1.
+Longitudinal Studies: Conducting more longitudinal studies could provide deeper insights into the progression of Alzheimer’s disease and improve early prediction models1.
+These areas for improvement and future research directions aim to enhance the accuracy and applicability of dementia prediction models, ultimately aiding in early diagnosis and better patient outcomes.
+
+3. - A Novel Approach Utilizing Machine Learning for the Early Diagnosis of Alzheimer's Disease by Khandaker Mohammad Mohi Uddin, Mir Jafikul Alam, Jannat-E-Anawar, Md Ashraf Uddin & Sunil Aryal 
+
+Objective: The paper proposes a machine learning model to predict Alzheimer’s disease (AD) using various algorithms like GaussianNB, Decision Tree, Random Forest, XGBoost, Voting Classifier, and GradientBoost1.
+Dataset: The model is trained on the OASIS dataset, which includes MRI data from 150 individuals aged 60 to 96.
+Results: The Voting Classifier achieved the highest validation accuracy of 96%23.
+Significance: Early diagnosis of AD can help in better management and treatment, potentially reducing the disease’s impact on patients and their families.
+
+DATA CLEANING:
+The paper employs several data cleaning methods to prepare the dataset for machine learning models:
+Handling Missing Values: Missing values in the dataset are imputed using the mean method for most features and the mode method for the “MMSE” feature.
+Data Redundancy: Redundant data is removed to improve the accuracy of the machine learning algorithms1.
+Feature Selection and Scaling: Relevant features are selected, and feature scaling is performed to enhance model performance.
+These steps ensure the dataset is clean and suitable for training the machine learning models
+
+FEATURE SELECTION 
+The key features of the dataset and the feature selection method used in the paper:
+Dataset Features: The dataset includes attributes such as age, gender, socioeconomic status (SES), Mini-Mental State Examination (MMSE) scores, normalized whole brain volume (nWBV), and cortical thickness.
+Feature Selection: The SelectKBest method was used for feature selection, which identifies the best features based on the highest scores1. The f_class scoring function was applied to select the most relevant features for the model.
+
+TRAIN - TEST SPLIT
+The paper mentions that the data was split into 80% for training and 20% for testing. This split was used to train the machine learning model for predicting Alzheimer’s disease.
+
+LIMITATIONS
+The limitations and areas for improvement discussed in the study:
+Data Preprocessing: Preprocessing can compromise data integrity, affecting model performance1. Approaches like data augmentation and cross-validation are suggested to address this.
+Feature Selection: Identifying relevant features is crucial. Future research should focus on removing redundant features and extracting unique ones to improve detection accuracy2.
+Model Validation: Overfitting is a concern. The study uses 10-fold cross-validation to mitigate this, but further refinement is needed.
+Early Detection: More research is required to establish reliable traits for early Alzheimer’s detection, which remains challenging.
+Is there a specific aspect of this research you’re particularly interested in?
+
+4. - A machine learning model for Alzheimer's disease prediction by Pooja Rani, Rohit Lamba, Ravi Kumar Sachdeva, Karan Kumar, Celestine Iwendi -https://doi.org/10.1049/cps2.12090
+
+Objective: The study aims to improve the accuracy and responsiveness of Alzheimer’s disease (AD) prediction using machine learning (ML) techniques1.
+Methodology: The authors propose a methodology called SMOTE-RF, which combines the Synthetic Minority Oversampling Technique (SMOTE) and Random Forest (RF) algorithm. They also evaluate Decision Tree (DT) and Extreme Gradient Boosting (XGB) algorithms2.
+Results: The RF algorithm achieved the highest accuracy of 95.03% on a balanced dataset, outperforming DT and XGB.
+Significance: Early and accurate diagnosis of AD can improve patient outcomes and reduce the societal and financial burden of the disease.
+
+DATA CLEANING:
+The paper employs several data cleaning methods to prepare the dataset for analysis:
+
+Removing Unnecessary Attributes: Attributes like Subject ID, MRI ID, and visit are removed from the dataset12.
+Handling Missing Values: Missing values in the dataset are addressed, though the specific method for handling them is not detailed in the provided context.
+Balancing the Dataset: The Synthetic Minority Oversampling Technique (SMOTE) is used to balance the dataset by creating synthetic samples for the minority class, ensuring more accurate predictions
+
+DATASET
+The study used the Open Access Series of Imaging Studies (OASIS) dataset available on Kaggle12. Here are the key features contained in the dataset:
+
+MRI ID and Subject ID: Unique identifiers for each MRI session and subject3.
+Demographics: Age, sex (M/F), and handedness (right, left, ambidextrous).
+Education and Socio-Economic Status (SES): Number of years of education and a 5-level categorization of SES4.
+Cognitive Assessments: Mini-Mental State Examination (MMSE) score and Clinical Diagnosis Rating (CDR)5.
+Brain Volume Measurements: Estimated Total Intracranial Volume (eTIV) and Normalised Whole Brain Volume (nWBV).
+Other Features: Atlas Scaling Factor (ASF), delay between MRI sessions, visit number, and dementia group (demented, converted, non-demented).
+
+PREPROCESSING FEATURE SELECTION:
+Data Preprocessing: Irrelevant attributes like Subject ID, MRI ID, and visit were removed34. The dataset was balanced using the Synthetic Minority Oversampling Technique (SMOTE) to address class imbalance
+
+TRAIN - TEST SPLIT:
+Training and Testing Split: The dataset was divided into training and testing sets, but the exact ratio is not specified in the provided context.
+
+LIMITATIONS:
+the limitations and future directions discussed in the paper:
+
+Limitations: The study relies on pre-existing neuroimaging datasets like OASIS, which may lack demographic diversity and have potential biases1. This reliance can hinder the model’s ability to generalize to real-world clinical scenarios.
+Future Directions: The authors plan to develop a system with improved accuracy using ensemble methods2. They also aim to extend their work to perform predictions using brain images
+
+5. - Early diagnosis of Alzheimer’s disease using machine learning: a multi-diagnostic, generalizable approach by Vasco Sá Diogo, Hugo Alexandre Ferreira & Diana Prata
+
+6. - A slice selection guided deep integrated pipeline for Alzheimer’s prediction from Structural Brain MRI by Muhammad Sakib Khan Inan, Nabila Sabrin Sworna, A.K.M. Muzahidul Islam,
+Salekul Islam, Zulfikar Alom, Mohammad Abdul Azim, Swakkhar Shatabda
+
+
+
+
+
+
+
+
+
+
+
+DATA CLEANING:
+FEATURE SELECTION:
+TRAIN - TEST SPLIT:
+LIMITATIONS:
+
+
+
+https://www.nitrc.org/account/first.php
+Name and Username: Chinonso Uche (angelnonso1)
+Password: Kate
+
+Enhancing Early Dementia Detection: A Machine Learning Approach Leveraging Cognitive and Neuroimaging Features for Optimal Predictive Performance
+
+
+
+RID	PTID	VISCODE	SITE	COLPROT	ORIGPROT	EXAMDATE	DX.bl	AGE	PTGENDER	PTEDUCAT	PTETHCAT	PTRACCAT	PTMARRY	APOE4	FDG	PIB	AV45	CDRSB	ADAS11	ADAS13	MMSE	RAVLT.immediate	RAVLT.learning	RAVLT.forgetting	RAVLT.perc.forgetting	FAQ	MOCA	EcogPtMem	EcogPtLang	EcogPtVisspat	EcogPtPlan	EcogPtOrgan	EcogPtDivatt	EcogPtTotal	EcogSPMem	EcogSPLang	EcogSPVisspat	EcogSPPlan	EcogSPOrgan	EcogSPDivatt	EcogSPTotal	Ventricles	Hippocampus	WholeBrain	Entorhinal	Fusiform	MidTemp	ICV	DX	EXAMDATE.bl	CDRSB.bl	ADAS11.bl	ADAS13.bl	MMSE.bl	RAVLT.immediate.bl	RAVLT.learning.bl	RAVLT.forgetting.bl	RAVLT.perc.forgetting.bl	FAQ.bl	Ventricles.bl	Hippocampus.bl	WholeBrain.bl	Entorhinal.bl	Fusiform.bl	MidTemp.bl	ICV.bl	MOCA.bl	EcogPtMem.bl	EcogPtLang.bl	EcogPtVisspat.bl	EcogPtPlan.bl	EcogPtOrgan.bl	EcogPtDivatt.bl	EcogPtTotal.bl	EcogSPMem.bl	EcogSPLang.bl	EcogSPVisspat.bl	EcogSPPlan.bl	EcogSPOrgan.bl	EcogSPDivatt.bl	EcogSPTotal.bl	FDG.bl	PIB.bl	AV45.bl	Years.bl	Month.bl	Month	M
+
+
+
+
+
+
+
+
+

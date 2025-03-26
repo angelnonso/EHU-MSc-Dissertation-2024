@@ -1,0 +1,962 @@
+I have a written four codes for dementia prediction. The first code merged 3 dataset; OASIS_cross-sectional dataset, OASIS_longitudinal dataset and ADNIMERGE dataset to build 7 models. The second code expanded on the first code and seperated the merged dataset by age group, 0-64 and 65+ and build 7 models for each age groups. The third code uses only one of each datasets to build four model and the fourth code expanded on the third code by seperating the dataset by age groups 0-64 and 65+ and build 4 models for each age groups.
+
+I want to write a report now, but I don't think you know anything about how I want my report to be written. The project report is in two parts, interim report and final report. I have started this project by writing an interim report which is a proposal that detailed all I plan to achieve in the project. So, I will provide you with all the information including the interim report, the learning outcome with its assessment criteria, the papers I have selected for in-text citations, the codes, and the final report structure. The Report must be written UK English and in 3rd person. The report should have proper and original in-text citations derived from papers I have selected for in-text citations and reference. For the final report structure which has 7 chapters, I will provide them chapter by chapter so you can produce the report coherently one step at a time without being overwhelmed. 
+
+Next, I will provide you with the information I mentioned above one after another, you do not need to do anything with the information, just keep them in memory until I ask you to do something alright?
+
+THE INTERIM REPORT STARTS HERE
+Machine Learning Approach to Dementia Prediction
+ 
+1	INTRODUCTION
+Dementia is a broad term that describes a group of symptoms caused by changes in brain function that affect memory, thinking, and behaviour (Arvanitakis & Bennett, 2019). It is not a normal part of aging, although it is more common among older adults. Various underlying diseases or conditions can cause dementia, such as Alzheimer's disease, vascular dementia, Lewy body dementia, and frontotemporal dementia (Quinn et al., 2021). Alzheimer's disease, the most common type of dementia, accounts for 60-70% of cases (World Health Organization, 2023). It is a progressive neurological disorder characterized by the deposition of amyloid plaques, neurofibrillary tangles, and synaptic loss, leading to cognitive decline and memory impairment (Sheppard & Coleman, 2020).
+The complex nature of Alzheimer's disease and other forms of dementia presents significant challenges in early detection and accurate diagnosis. Recent advancements in artificial intelligence, particularly in the field of machine learning, have shown promising results in addressing these challenges (Li et al., 2021). Machine learning techniques can analyse vast amounts of diverse data types, including neuroimaging, genetic information, cognitive test scores, and clinical records, to identify subtle patterns and biomarkers associated with dementia (Zhu et al., 2020). These sophisticated approaches enable the development of models for early detection, diagnosis, and prognosis of dementia, particularly Alzheimer's disease. Such models have shown promise in identifying individuals at risk of developing Alzheimer's before symptoms become apparent, potentially improving early detection, and enhancing diagnostic accuracy. Furthermore, these techniques can predict disease progression, offering the potential for more timely interventions, better management of the condition, and the development of personalized treatment strategies. By leveraging machine learning in this way, researchers and clinicians aim to significantly improve patient outcomes through earlier and more targeted interventions in the field of dementia care.
+
+An example of how advanced machine learning techniques have improved Alzheimer's prediction can be seen in the work of Park et al. (2020). They developed a machine learning model using large-scale administrative health data to predict the incidence of Alzheimer's disease. Their model, which incorporated various health-related features and utilized advanced algorithms, demonstrated high accuracy in predicting Alzheimer's disease up to five years before clinical diagnosis. This approach showcases how machine learning can leverage complex, multi-dimensional data to provide early warnings of Alzheimer's disease, potentially allowing for earlier intervention and better patient outcomes. Given the promising applications of machine learning in dementia research, it's important to understand what machine learning is and how it's being specifically applied to Alzheimer's detection and prediction. Machine learning is a subfield of artificial intelligence that involves training algorithms to learn from data and make predictions or decisions without being explicitly programmed (Mitchell, 1997).  A machine learning model is a mathematical representation of a system or process that is trained on data to make predictions or classifications. Machine learning models have been widely used in various applications, including image and speech recognition, natural language processing, and predictive analytics. In the context of dementia prediction, machine learning models can be trained on large datasets of clinical, imaging, and biomarker features to identify patterns and predict the likelihood of developing dementia (Li et al., 2021). Figure 1 below shows a flowchart describing the process of Machine Learning Operation. The goal of dementia prediction is to identify individuals at high risk of developing dementia, allowing for early intervention, and potentially delaying or preventing disease progression.
+
+ 
+Figure 1: Flowchart of Machine Learning workflow
+
+A recent systematic review by Javeed et al. (2023) highlighted the potential of machine learning for dementia prediction, but also identified several limitations and future research directions. The review examined various studies that utilized different types of data for dementia prediction, including: 
+i.	Neuroimaging data, (such as MRI and PET scans).
+ii.	Clinical-Variable Data which consists of medical tests and patient information such as age, sex, and cognitive assessments.
+iii.	Voice Data which involves speech analysis to detect neurodegenerative disorders affecting language processing.
+
+While these diverse data types have shown promise in machine learning models for dementia prediction, the review emphasized several limitations:
+1.	Single Data Modality Focus: Previous systematic literature reviews (SLRs) focused on a single type of data modality for dementia detection, limiting the comprehensiveness of the evaluation.
+2.	Data Quality Issues: Poor quality of data and imbalance in dataset classes can lead to biased results from machine learning (ML) models.
+3.	Model Selection: Inappropriate selection of ML models and the complexity of training models can affect the performance of automated diagnostic systems.
+4.	Supervised Learning Constraints: Supervised ML techniques have inherent limitations, which can impact the effectiveness of automated diagnostic methods for dementia prediction.
+
+The review emphasized the need for multimodal approach that combine image, clinical and voice data, larger datasets, and voice data improvement . This project therefore aims to develop a machine learning model for predicting Alzheimer's disease using a larger and more diverse dataset. The objectives are:
+	To review existing literature on dementia, Alzheimer's disease, and machine learning models for dementia prediction.
+	To combine multiple datasets, such a s OASIS and ADNI dataset to create a larger dataset for model development.
+	To develop a machine learning model for predicting Alzheimer's disease.
+	To evaluate the performance of the developed model and compare it with existing models.
+2	LITERATURE REVIEW
+
+2.1	Background and Significance of Demetia
+Dementia is a complex and multifactorial condition that affects millions of people worldwide, ca using cognitive decline, memory loss, and changes in behaviour and mood (Dr Raina Loh, 2023). It is a significant public health concern, with an estimated 55 million people worldwide living with the condition, and this number is expected to increase to 78 million by 2030 and 139 million by 2050. The economic burden of dementia is significant, with estimated annual costs of over $1.3 trillion US Dollars in 2019 and may rise to $2.8 trillion by 2030 (Shin, 2022).
+
+Early diagnosis or prediction is crucial for timely and treatment. Early intervention is critical for improving patient outcomes and reducing costs (Brookmeyer et al., 2017). However, dementia diagnosis is often delayed or inaccurate, leading to inadequate care and support for patients and caregivers (Pais et al., 2020).
+2.2	Current State of Machine Learning in Dementia Prediction
+The use of machine learning models for dementia prediction has shown promise in recent studies, with some models achieving high accuracy and generalizability across different populations (Javeed et al., 2023). Machine learning models have been increasingly used for dementia prediction, leveraging various features, and achieving promising performance (Park et al. 2020).
+
+Researchers are showing interest in this field, with different people employing different data mode and mechanisms to produce better accuracy. Li et al. (2021) in their study employed logistic regression, decision trees, and random forests to predict dementia using cognitive tests and neuroimaging features, achieving an accuracy of 85.7%. Similarly, Park et al. (2020) used different machine learning algorithms and a combination of cognitive tests, neuroimaging, and biomarkers variables to predict Alzheimer's disease with high accuracy of 92.5%.
+
+Several machine learning models have been developed for dementia prediction, but they have limited accuracy. A systematic review of machine learning models for dementia prediction found that the models had a median accuracy of 85% (range 70-100%) (Bari Antor et al., 2021). Another review found that the models had a median area under the receiver operating characteristic curve (AUC-ROC) of 0.85 (range 0.70-0.95) (Grueso and Viejo-Sobera, 2021).
+
+Table 1:
+Summary of Machine Learning Studies for Dementia and Alzheimer's Disease Prediction
+Study	ML Approaches Used	Types of Data Used	Specific Task	Accuracy/ Performance
+Li et al. (2021)	Logistic regression, Decision trees, Random forests	Cognitive tests, Neuroimaging	Dementia prediction	85.7% accuracy
+Park et al. (2020)	Not specified (general "machine learning algorithms")	Cognitive tests, Neuroimaging, Biomarkers	Alzheimer's disease prediction	92.5% accuracy
+Bari Antor et al. (2021)	Systematic review of various ML models	Not specified	Alzheimer's disease prediction	Median accuracy of 85% (range 70-100%)
+Grueso and Viejo-Sobera (2021)	Systematic review of various ML models	Not specified	Predicting progression from mild cognitive impairment to Alzheimer's disease	Median AUC-ROC of 0.85 (range 0.70-0.95)
+Musto et al. (2021)	Not specified	Not specified	Dementia prediction	83.6% accuracy
+Battineni et al. (2020)	Not specified (discussed challenges in ML models)	Not specified	Not specified	Not reported
+2.3	Applying Machine Learning to Dementia Prediction
+Machine learning models have been applied to various datasets to predict the likelihood of developing dementia. For example, a study by Park et al. (2020) used large-scale administrative health data to predict the incidence of Alzheimer's disease with high accuracy. Similarly, a study by Musto et al. (2021) developed a machine learning approach to predict deterioration in Alzheimer's disease.
+
+These models can be trained on various features, including clinical, imaging, and biomarker data. For instance, a study by Li et al. (2021) applied machine learning to omics, imaging, and clinical data to identify patterns and predict Alzheimer's disease. Another study by Battineni et al. (2020) used machine learning predictive models for chronic disease diagnosis, including dementia.
+
+The use of machine learning models for dementia prediction has shown promise, with some models achieving high accuracy and generalizability across different populations. For example, a study by Kim and Lim (2021) developed a deep neural network-based method for predicting dementia using big data, achieving high accuracy and F1-score. Similarly, a study by Bucholc et al. (2023) developed a hybrid machine learning approach to predict conversion from mild cognitive impairment to dementia, achieving high accuracy and area under the receiver operating characteristic curve.
+2.4	Challenges and Limitations
+The results of several studies that have used machine learning algorithms to predict dementia have been inconsistent (Li et al., 2021). For example, Park et al. (2020) developed a machine learning model that predicted Alzheimer's disease with an accuracy of 85.7%, while Musto et al. (2021) developed a model that predicted dementia with an accuracy of 83.6%.
+
+Existing studies have limitations. For example, Li et al. (2021) relied on a relatively small sample size (n=150) and did not consider important biomarkers like APOE genotyping. Park et al. (2020) used a larger dataset (n=1200) but did not report feature importance or model interpretability. The field faces challenges in terms of data quality, feature selection, and model generalizability (Battineni et al. 2020). Machine learning models for dementia prediction often suffer from overfitting and lack robustness due to small sample sizes and noisy data.
+2.5	Future Direction
+Other limitations of existing models highlight the need for larger and more diverse datasets to improve their performance (Bari Antor et al., 2021). Additionally, there is a need for more critical evaluation of the models, including their generalisability and clinical utility (Kumar et al., 2021). To address these challenges, future studies should prioritize data harmonization, feature engineering, and ensemble learning models. Additionally, incorporating domain knowledge and expert feedback can improve model interpretability and generalisability.
+
+The literature review highlights the need for more research on machine learning models for dementia prediction, with a focus on larger and more diverse datasets, and more critical evaluation of the models.
+
+
+
+
+3	ETHICAL IMPLICATIONS
+The project utilises anonymised datasets from Kaggle and OASIS. These are reputable open-access repositories, ensuring the protection of personal information and maintaining ethical standards.
+3.1	Individuals Affected:
+The project benefits from the contributions of individuals who have shared their data through open-access repositories, promoting research and innovation.
+3.2	Ethical Considerations:
+	Acknowledgement: The project acknowledges the original creators and sources of the datasets, ensuring proper citation and credit.
+	Compliance: The project adheres to the terms and conditions of the repositories and dataset licenses, respecting the intentions of the data providers.
+	Data Security: Robust security measures are implemented to protect the dataset during storage, processing, and analysis, maintaining confidentiality and integrity.
+	Transparency: Clear documentation and publication of the dataset's origin, limitations, and usage ensure accountability and transparency.
+By leveraging anonymised datasets from Kaggle and OASIS open-access repositories  and addressing these ethical considerations, the project promotes responsible innovation and respects the contributions of the data providers.
+
+
+
+
+
+4	PROJECT MANAGEMENT & PROGRESS REVIEW
+Project management is crucial for achieving the objectives of this machine learning project for dementia prediction. A project plan has been developed, outlining the phases, tasks, and activities with estimated timelines.
+4.1	Project Plan
+	Topic Selection (Completed)
+o	Duration: 5 weeks
+o	Tasks: Find Research and Select Suitable Topic for Dissertation
+	Literature Review (Completed)
+o	Duration: 2 weeks
+o	Tasks: Research and analyse existing studies on machine learning for dementia prediction
+	Data Collection and Preprocessing (Ongoing)
+o	Duration: 3 weeks
+o	Tasks: Collect datasets from open-access repositories, preprocess and anonymize data
+	Model Development and Training (Upcoming)
+o	Duration: 6 weeks
+o	Tasks: Develop and train machine learning models for dementia prediction
+	Model Evaluation and Testing (Upcoming)
+o	Duration: 1 weeks
+o	Tasks: Evaluate and test the performance of the developed models
+	Project Report and Documentation (Ongoing)
+o	Duration: 1 weeks
+o	Tasks: Document project progress, results, and conclusions
+4.2	Progress Review:
+	Topic Selection completed.
+	Literature review completed, providing a solid foundation for the project.
+	Data collection and preprocessing underway, with a focus on anonymised datasets from Kaggle and OASIS open access repositories.
+	Interim Report submission completed.
+	Model development and training scheduled to commence upon completion of data preprocessing.
+	Model evaluation and testing scheduled to commence upon completion of model development.
+	Project report and documentation ongoing, ensuring transparent progress tracking.
+	Final Project submission process to commence upon completion of project report.
+4.3	Critical Reflective Analysis:
+	The project plan has helped maintain focus and direction, with the literature review providing a strong foundation.
+	Time management has been effective, with tasks completed within estimated timelines.
+	Collaboration with open-access repositories has ensured access to valuable datasets while maintaining ethical standards.
+	Areas for improvement include more frequent progress updates and enhanced documentation.
+4.4	Gantt Chart:
+Agile Gantt Chart has been designed in Microsoft Excel 365 to manage and track the progress of this project. Click the link in this Dissertation - Gantt Chart to open the Gantt Chart designed in Microsoft Excel.
+This project plan and progress review demonstrate the systematic approach adopted to achieve the project objectives. The critical reflective analysis highlights areas of strength and improvement, ensuring the project remains on track to deliver a machine learning model for dementia prediction.
+
+5	REFERENCES
+ARVANITAKIS, Z. and BENNETT, D.A., 2019. What Is Dementia? JAMA [online]. 322 (17), p. 1728. Available from: https://jamanetwork.com/journals/jama/fullarticle/2753900 [Accessed 5 Jul 2024].
+AYODELE, T., ROGAEVA, E., KURUP, J.T., BEECHAM, G., and REITZ, C., 2021. Early-Onset Alzheimer’s Disease: What Is Missing in Research? Current Neurology and Neuroscience Reports [online]. 21 (2). Available from: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7815616/ [Accessed 5 Jul 2024].
+BARI ANTOR, M., JAMIL, A.H.M.S., MAMTAZ, M., MONIRUJJAMAN KHAN, M., ALJAHDALI, S., KAUR, M., SINGH, P., and MASUD, M., 2021. A Comparative Analysis of Machine Learning Algorithms to Predict Alzheimer’s Disease. Journal of Healthcare Engineering [online]. 2021, p. e9917919. Available from: https://www.hindawi.com/journals/jhe/2021/9917919/ [Accessed 5 Jul 2024].
+BATTINENI, G., SAGARO, G.G., CHINATALAPUDI, N., and AMENTA, F., 2020. Applications of Machine Learning Predictive Models in the Chronic Disease Diagnosis. Journal of Personalized Medicine [online]. 10 (2). Available from: https://pubmed.ncbi.nlm.nih.gov/32244292/ [Accessed 5 Jul 2024].
+BROOKMEYER, R., ABDALLA, N., KAWAS, C.H., and CORRADA, M.M., 2017. Forecasting the Prevalence of Preclinical and Clinical Alzheimer’s Disease in the United States. Alzheimer’s & Dementia [online]. 14 (2), pp. 121–129. Available from: https://www.sciencedirect.com/science/article/abs/pii/S155252601733813X [Accessed 5 Jul 2024].
+BUCHOLC, M., TITARENKO, S., DING, X., CANAVAN, C., and CHEN, T., 2023. A Hybrid Machine Learning Approach for Prediction of Conversion from Mild Cognitive Impairment to Dementia. Expert Systems with Applications. 217, p. 119541.
+DR RAINA LOH, 2023. Dementia. Keystone Clinic & Surgery [online]. Available from: https://keystonemedical.com.sg/dementia/ [Accessed 5 Jul 2024].
+GRUESO, S. and VIEJO-SOBERA, R., 2021. Machine Learning Methods for Predicting Progression from Mild Cognitive Impairment to Alzheimer’s Disease dementia: a Systematic Review. Alzheimer’s Research & Therapy. 13 (1).
+JAVEED, A., DALLORA, A.L., BERGLUND, J.S., ALI, A., ALI, L., and ANDERBERG, P., 2023. Machine Learning for Dementia Prediction: a Systematic Review and Future Research Directions. Journal of Medical Systems. 47 (1).
+KIM, J. and LIM, J., 2021. A Deep Neural Network-Based Method for Prediction of Dementia Using Big Data. International Journal of Environmental Research and Public Health [online]. 18 (10), p. 5386. Available from: https://pubmed.ncbi.nlm.nih.gov/34070100/#:~:text=A%20Deep%20Neural%20Network-Based%20Method%20for%20Prediction%20of.
+KUMAR, S., OH, I., SCHINDLER, S., LAI, A.M., PAYNE, P.R.O., and GUPTA, A., 2021. Machine Learning for Modeling the Progression of Alzheimer Disease Dementia Using Clinical data: a Systematic Literature Review. JAMIA Open. 4 (3).
+LI, Z., JIANG, X., WANG, Y., and KIM, Y., 2021. Applied Machine Learning in Alzheimer’s Disease research: omics, imaging, and Clinical Data. Emerging Topics in Life Sciences. 5 (6), pp. 765–777.
+MITCHELL, T.M., 1997. Machine Learning. New York: Mcgraw-Hill.
+MUSTO, H., STAMATE, D., PU, I., and STAHL, D., 2021. A Machine Learning Approach for Predicting Deterioration in Alzheimer’s Disease. 2021 20th IEEE International Conference on Machine Learning and Applications (ICMLA).
+PAIS, M., MARTINEZ, L., RIBEIRO, O., LOUREIRO, J., FERNANDEZ, R., VALIENGO, L., CANINEU, P., STELLA, F., TALIB, L., RADANOVIC, M., and FORLENZA, O.V., 2020. Early Diagnosis and Treatment of Alzheimer’s disease: New Definitions and Challenges. Brazilian Journal of Psychiatry. 42 (4).
+PARK, J.H., CHO, H.E., KIM, J.H., WALL, M.M., STERN, Y., LIM, H., YOO, S., KIM, H.S., and CHA, J., 2020. Machine Learning Prediction of Incidence of Alzheimer’s Disease Using large-scale Administrative Health Data. npj Digital Medicine [online]. 3 (1), pp. 1–7. Available from: http://www.nature.com/articles/s41746-020-0256-0 [Accessed 5 Jul 2024].
+QUINN, C., PICKETT, J.A., LITHERLAND, R., MORRIS, R.G., MARTYR, A., and CLARE, L., 2021. Living Well with dementia: What Is Possible and How to Promote It. International Journal of Geriatric Psychiatry [online]. 37 (1). Available from: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9292841/ [Accessed 5 Jul 2024].
+SHEPPARD, O. and COLEMAN, M., 2020. Alzheimer’s Disease: Etiology, Neuropathology and Pathogenesis. Exon Publications [online]. pp. 1–21. Available from: https://exonpublications.com/index.php/exon/article/view/252/473#figures [Accessed 5 Jul 2024].
+SHIN, J.-H., 2022. Dementia Epidemiology Fact Sheet 2022. Annals of Rehabilitation Medicine [online]. 46 (2), pp. 53–59. Available from: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9081392/ [Accessed 4 Jul 2024].
+WORLD HEALTH ORGANIZATION, 2023. Dementia. World Health Organization [online]. Available from: https://www.who.int/news-room/fact-sheets/detail/dementia [Accessed 4 Jul 2024].
+ZHU, F., LI, X., TANG, H., HE, Z., ZHANG, C., HUNG, G.-U., CHIU, P.-Y., and ZHOU, W., 2020. Machine Learning for the Preliminary Diagnosis of Dementia. Scientific Programming. 2020, pp. 1–10.
+
+THE INTERIM REPORT ENDS HERE
+
+
+
+
+
+THE ASSESSMENT CRITERIA STARTS HERE
+Assessment Criteria
+Assessment Criteria		Mark
+(0 – 29)	Mark
+(30 – 39)	Mark
+(40 – 49)	Mark 
+(50 – 59)	Mark
+(60 – 69)	Mark 
+(70 -84)	Mark 
+(85 – 100)
+		Grade:
+Fail	Grade:
+Narrow fail	Grade:
+Pass	Grade:
+Good	Grade:
+Very Good	Grade:
+Excellent	Grade:
+Outstanding
+LO1: Identify, specify, and critically analyse a system, issue, or problem of current interest within a relevant context. 
+	Aim & Objectives;
+Requirements analysis of software	Nothing submitted or an inadequate level of engagement with the coursework requirements to demonstrate appropriate knowledge or skills.
+
+No or unclear aim and objectives.	Limited attempt to establish and define the rationale of a chosen system, issue, or problem of current interest.  Demonstrates limited awareness of current trends, challenges, or developments related to the subject area.
+
+Either a weak aim or weak objectives evident.	Establishes the rationale of the chosen system, issue, or problem of current interest.  Shows some awareness of current trends, challenges, or developments related to the subject area.
+
+Both the aim and objectives are indicated but are weakly defined.	Establishes the rationale of the chosen system, issue or problem of current interest to a satisfactory extent.  Provides context that illustrates/describes the significance of the identified subject area.
+
+A clear aim but weak objectives defined.	Clearly identifies and defines the chosen system, issue, or problem of current interest.  Provides sufficient context to understand the significance of the identified subject area.
+
+Clear aim and clear objectives but not SMART.	Demonstrates a deep understanding of the complexities and nuances of the chosen system, issue, or problem of current interest. Provides a thorough rationale grounded in the literature.
+
+Clear and concise aim underpinned by SMART objectives.
+	Synthesises findings from research to provide a coherent and holistic rationale of the chosen system, issue, or problem of current interest.    Evaluates the implications of actions in terms of outcomes or recommendations in the subject area.
+LO2: Critically and systematically review relevant literature and alternative approaches and solutions. 
+	Literature Review	Nothing submitted or fails to conduct a meaningful review of relevant literature.  Does not summarise key concepts, theories, or findings from existing literature.  Shows no understanding of different perspectives within the chosen subject area.  Provides no evidence of engagement with alternative viewpoints or approaches.
+	Attempts to review relevant literature is evident but lacks depth or coherence. Summarises key concepts, theories, and findings from existing literature superficially. Shows minimal understanding of different perspectives within the chosen subject area, with limited engagement with alternative viewpoints	Conducts a review of relevant literature, but the scope may be limited or lacks depth. 
+
+Descriptive summary of key concepts, theories, and findings from existing literature, but may lack clarity or thoroughness. Demonstrates some understanding of different perspectives within the chosen subject area but may overlook important sources or alternative viewpoints.
+
+Literature review has not, or has marginally developed from original version.
+	A thorough review of relevant literature related to the chosen topic is evident.  
+
+Identifies and summarises key concepts, theories, and findings from existing literature with some depth.  Demonstrates an understanding of different perspectives and approaches within the subject area.
+
+Literature review has developed from original version but is descriptive rather than critical.
+	Critically evaluates the strengths and weaknesses of the literature reviewed, demonstrating discernment and analytical thinking. 
+
+Synthesises information from various sources to provide a coherent and nuanced understanding of the subject area.
+
+Literature review has developed from original version by exhibiting criticality of discussion with appropriate theoretical underpinning	Engages in critical analysis of the literature, demonstrating a high level of critical thinking and analytical skills.  
+
+Provides clear and insightful critiques of the literature, highlighting strengths and weaknesses.
+
+The literature review has evolved from its original version by extensively integrating critical discussion supported by appropriate theoretical underpinning.	Identifies and evaluates the strengths, limitations, and implications of different approaches and solutions presented in the literature. Offers insightful interpretations and perspectives on the existing literature and demonstrates a nuanced understanding of alternative approaches and solutions, evaluating their relevance, feasibility and potential impact on the subject area.
+
+The literature review has progressed from its initial iteration by deeply incorporating critical discourse backed by suitable theoretical foundations.
+LO3: Demonstrate and critically self-reflect on the significance of the outcomes of the project in a professional manner including aspects related to legal, social, and ethical implications. 
+	Legal, Social, Ethical & Critical Reflection	Nothing submitted or minimal evidence of self-reflection on the significance of the project outcomes, lacking depth or insight. Demonstrates minimal understanding of legal, social, or ethical implications related to the project outcomes. Shows little awareness of the professional implications of the project outcomes.
+	Limited evidence of self-reflection.  Fails to identify or analyse legal, social, or ethical implications related to the project outcomes adequately. Demonstrates a lack of critical evaluation of the professional implications of the project outcomes. Communication may lack clarity or coherence, hindering the effectiveness of self-reflection and analysis	Provides some self-reflection on the significance of the project outcomes, but the depth of reflection may be limited. 
+Identifies some legal, social, or ethical implications related to the project outcomes. 
+
+Demonstrates a basic understanding of the professional implications of the project outcomes.
+	Provides thoughtful analysis of legal, social, or ethical implications related to the project outcomes. 
+
+Evaluates the professional implications of the project outcomes, considering potential impacts and consequences. 
+
+Communicates insights in a clear, coherent, and organised manner, demonstrating a professional approach to self-reflection and analysis.	Provides comprehensive self-reflection on the significance of the project outcomes, demonstrating depth and insight. 
+
+Identifies and analyses legal, social, or ethical implications related to the project outcomes with clarity and coherence. 
+
+Shows a strong understanding of the professional implications of the project outcomes, considering potential impacts and consequences.
+	Demonstrates professionalism in presenting self-reflections on the project outcomes, with clear organisation and coherence. 
+Provides a through and insightful analysis of legal, social, or ethical implications related to the project outcomes, offering nuanced perspectives. 
+
+Critically evaluates the professional implications of the project outcomes, demonstrating a thorough understanding of relevant issues. 
+	Provides exceptional and profound self-reflection on the significance of the project outcomes, showcasing exceptional depth and insight. Identifies and analyses legal, social, or ethical implications related to the project outcomes with exceptional clarity, depth, and sophistication. 
+
+Demonstrates an exceptional understanding of the professional implications of the project outcomes, considering a wide range of potential impacts and consequences with exceptional insight.
+
+
+
+
+
+LO4: Demonstrate systematic application of knowledge, together with a practical understanding of how current techniques of research and enquiry are used to identify, develop, and evaluate practical solutions to a well-defined problem.
+	
+
+
+
+
+
+
+Methodologies	Nothing submitted or demonstrates minimal understanding of relevant concepts, theories, and principles related to the problem domain.
+Shows little to no understanding of current methodologies (research and development) and techniques applicable to the problem domain.  
+Limited identification of appropriate sources of information or data to inform problem-solving processes.	Displays partial understanding of methodologies (research and development) and techniques applicable to the problem domain, but inconsistency in application is evident.
+
+Attempts to gather information or data is indicated but weaknesses are evident due to the absence of important sources or a failure to critically evaluate their relevance	Demonstrates a basic understanding of relevant concepts, theories, and principles related to the problem domain. 
+Applies selected methodologies (research and development) and techniques applicable to the problem domain, with some degree of effectiveness but may lack consistency or thoroughness.	Appropriate methodologies (research and development) and techniques applied to the problem domain effectively.  Gathers and evaluates information or data relevant to the problem. 
+Demonstrates proficiency in critically analysing and synthesising research findings to inform problem-solving processes.	Applies key concepts effectively to the problem, demonstrating coherence and consistency in their application, with practical considerations that inform the problem-solving processes.
+
+Demonstrates a systematic approach to selecting and employing appropriate methodologies (research and development), to the problem domain, ensuring thoroughness and accuracy relevant to the problem	Applies methodologies (research and development) and techniques to the problem domain with proficiency.  Gathers, evaluates, and synthesise information or data relevant to the problem. 
+Integrates theoretical insights with practical considerations in a coherent and insightful manner to inform problem-solving processes.
+	Selects and applies methodologies (research and development) and techniques to the problem domain with exceptional prowess to gather, evaluate, and synthesise information or data relevant to the problem. 
+Exhibits unparalleled critical thinking, creativity, and originality in analysing and synthesising research findings to inform problem-solving processes with depth and sophistication.
+
+	Artefact – design, development, evaluation	Does not develop / generate any practical technological solutions or approaches to address the defined problem. Or offers solutions that are impractical, unrealistic, or not supported by evidence or reasoning. 
+
+Does not demonstrate any attempt to evaluate the effectiveness or feasibility of proposed solution	Proposes potential technological solutions to address the problem but lacks depth or coherence in their development. 
+Artefact demonstrates some attempt to apply relevant knowledge and understanding to formulate the problem solution but requires further refinement.
+
+Attempts to evaluate the feasibility or effectiveness of proposed solution but lacks thoroughness or depth in analysis.
+	Proposes technological  solution to address the problem with some degree of coherence and relevance. 
+
+The artefact demonstrates a basic understanding of relevant concepts and considerations. 
+
+Attempts to evaluate the feasibility and effectiveness of proposed solution but may exhibit limitations in analysis or depth of consideration.	Proposed technological solution addresses the problem effectively, demonstrating a logical and systematic approach. 
+
+Artefact demonstrates consistent and systematic engagement with the problem-solving process and a capacity to integrate theoretical knowledge with practical considerations.
+Identifies potential risks, limitations, and trade-offs associated with solution and demonstrates a basic understanding of their implications	Proposed technological solution is well-developed, logically structured, and effectively addresses the problem. 
+
+Artefact demonstrates proficiency and competence, with evidence of critical thinking, analytical skills in problem-solving.
+
+Conducts a comprehensive evaluation of the feasibility, effectiveness, and potential impacts of the proposed solution, considering multiple factors and perspectives.
+	Proposed technological solution is well-developed, logically structured, and highly effective in addressing the problem. 
+Artefact demonstrates mastery, excellence, and sophistication, with evidence of exceptional critical thinking, analytical skills, creativity, and insight in solving the defined problem.
+Identifies, analyses, and synthesises potential risks, limitations, and trade-offs associated with the solution with depth, insight, and sophistication.	Proposed technological solution is of exceptional quality, innovation, and effectiveness in addressing the problem.  
+
+Artefact demonstrates insight, supported by robust reasoning, evidence, and theoretical insight in problem-solving excellence.
+
+Conducts a comprehensive and rigorous evaluation of the feasibility, effectiveness, and potential impacts of the proposed solution of unparalleled depth, insight, and sophistication.
+LO5: Deal with complex issues both systematically and creatively, make sound judgments in the absence of complete data, and communicate their conclusions clearly, relating theory to practice. 
+	Conclusions	Nothing submitted or demonstrates limited ability to break down complex problems into manageable components or identify key factors influencing the situation.
+
+Fails to effectively relate theoretical concepts to practical applications, resulting in disjointed or irrelevant discussions.
+Lacks depth, coherence, and relevance, when applying theoretical concepts to practical situations.	Demonstrates some attempt to address complex issues systematically but struggles to comprehend complex problems, relying on conventional solutions or superficial analyses.
+Attempts to relate theoretical concepts to practical applications, but the connection may be unclear or superficial.	Demonstrates some ability in breaking down complex problems into manageable components and /or identifying key influencing factors.
+
+Makes partially sound judgments when faced with incomplete data.
+Demonstrates some ability to relate theoretical knowledge to practical situations but may lack depth or relevance.	Demonstrates an ability to address complex issues systematically, identifying key components and considering relevant factors.
+Makes generally sound judgments when faced with incomplete data, and considers potential implications.
+Demonstrates an ability to incorporate theoretical insights into practical decision-making processes or problem-solving approaches, albeit inconsistently.
+	Demonstrates an ability to address complex issues systematically, identifying key components and considering relevant factors effectively.
+
+Some judgement shown in exercising caution when drawing conclusions in the absence of complete data.
+
+Demonstrates a good ability to relate theoretical knowledge to practical situations, applying theoretical insights to inform decision-making processes.
+	Addresses complex issues systematically, adeptly identifying key components and considering relevant factors comprehensively.
+
+Makes sound judgments when faced with incomplete data, weighing alternative perspectives and implications with a high degree of effectiveness.
+
+Articulates theoretical concepts to practical applications seamlessly, establishing a clear and meaningful connection between theory and practice.
+	Analyses complex problems with exceptional depth and applies structured approaches with precision and ingenuity, demonstrating mastery in problem-solving.
+
+Expresses caution when drawing conclusions in the absence of complete data, demonstrating an exceptional understanding of uncertainty and risk.
+Consistently integrates theoretical concepts into practical contexts with depth, relevance, and insight, to inform decision-making processes or problem-solving approaches
+
+Spelling, Punctuation and Grammar		Frequent significant errors in spelling, punctuation, and grammar severely affecting the meaning / comprehension of scientific arguments and reasoning.
+
+Little, no or very repetitive use of relevant technical terminology. 
+
+Very poor sentence and paragraph structure which seriously affects the clarity of the discussion.	Some significant errors in spelling, punctuation, and grammar affecting the meaning / comprehension of scientific arguments and reasoning.
+
+Limited or repetitive use of relevant technical terminology. 
+
+Poor sentence and paragraph structure which affects the clarity of the discussion. 
+	Reoccurring errors in spelling, punctuation, and grammar that may affect the meaning / comprehension of scientific arguments and reasoning.
+
+Some appropriate vocabulary incorporating some technical terminology is present.
+
+Sentence and paragraph structures are partially correct and contain appropriate syntax aiding the clarity of the discussion.	Errors in spelling, punctuation and grammar that do not affect meaning / comprehension of scientific arguments and reasoning and are not recurring.
+
+A variety of appropriate vocabulary incorporating some relevant technical terminology is present and generally effective.
+
+Sentence and paragraph structures are partially correct and contain appropriate syntax and relevant vocabulary, aiding the understanding of the discussion.	Only very minor and not recurring errors in spelling, punctuation that do not affect meaning / comprehension of scientific arguments and reasoning and are not recurring.
+
+Effective and accurate use of a variety of appropriate vocabulary, incorporating adequate and accurately used technical terminology.
+
+Correct sentence and paragraph structures that contain appropriate syntax and relevant vocabulary, aiding the understanding of the discussion.	No or negligible errors in spelling, punctuation, and grammar.
+
+Effective and accurate use of a variety of appropriate vocabulary, incorporating adequate and accurately used technical terminology.
+
+Correct sentence and paragraph structures that contain appropriate syntax and relevant vocabulary, aiding the understanding of the discussion.
+
+Adopts a professional and academic writing style and conventions, with each paragraph following the SEED structure.	No errors in spelling, punctuation, and grammar.
+
+Highly effective and accurate use of a variety of appropriate vocabulary, incorporating adequate and accurately used technical terminology.
+
+Consistent use of correct sentence and paragraph structures that contain appropriate syntax and relevant vocabulary, aiding the understanding of the discussion.
+
+Adopts a professional and academic writing style and conventions, with each paragraph following the SEED structure.
+
+THE ASSESSMENT CRITERIA ENDS HERE
+
+
+
+
+
+THE PAPERS I HAVE SELECTED FOR IN-TEXT CITATION STARTS HERE
+
+1. Dementia Prediction Using Machine Learning BY
+Sara Dhakal, Sami Azam, Khan Md. Hasib, Asif Karim, Mirjam Jonkman, A S M Farhan Al Haque - https://doi.org/10.1016/j.procs.2023.01.414
+
+2. Computational Modeling of Dementia Prediction Using Deep Neural Network: Analysis on OASIS Dataset BY
+Shakila Basheer; Surbhi Bhatia; Sapiah Binti Sakri -  DOI: 10.1109/ACCESS.2021.3066213
+
+3. Comparative Machine Learning Approach in Dementia Patient Classification using Principal Component Analysis BY
+Gopi Battineni, Nalini Chintalapudi and Francesco Amenta - DOI: 10.5220/0009096907800784
+
+4. A Comparative Analysis of Machine Learning Algorithms to Predict Alzheimer’s Disease BY
+Morshedul Bari Antor, A. H. M. Shafayet Jamil, Maliha Mamtaz, Mohammad Monirujjaman Khan, Sultan Aljahdali, Manjit Kaur, Parminder Singh, Mehedi Masud - https://doi.org/10.1155/2021/9917919
+
+5. Dementia Prediction Using OASIS Data for Alzheimer’s Research BY
+Rahul B. Diwate; Ridhya Ghosh; Rituraj Jha; Ishu Sagar; Saket Kumar Singh - DOI: 10.1109/AIMV53313.2021.9670900
+
+6. A multimodal machine learning model for predicting dementia conversion in Alzheimer’s disease BY
+Min-Woo Lee, Hye Weon Kim, Yeong Sim Choe, Hyeon Sik Yang, Jiyeon Lee, Hyunji Lee, Jung Hyeon Yong, Donghyeon Kim, Minho Lee, Dong Woo Kang, So Yeon Jeon, Sang Joon Son, Young-Min Lee, Hyug-Gi Kim, Regina E. Y. Kim & Hyun Kook Lim - DOI: https://doi.org/10.1038/s41598-024-60134-2
+
+7. Towards Precision Dementia Detection: Integrating ML and Clinical Data BY
+Niravange Kandula; Sujata Chakravarty; Aksha Kandula; Sunil Kumar Mohapatra - DOI: 10.1109/ASSIC60049.2024.10507984
+
+8. Dementia Classification Using Deep Reinforcement Learning for Early Diagnosis BY
+Arshad Hashmi 1,*ORCID andOmar Barukab - DOI: https://doi.org/10.3390/app13031464
+
+9. Detection of Dementia using Machine Learning Algorithms BY
+Ramyasri M M; Yoga M; Vetri Vendhan S; Pramoth Kumar M; Karthickeyan S - DOI: 10.1109/ICC-ROBINS60238.2024.10534009
+
+10. Dementia classification from magnetic resonance images by machine learning BY
+Georgina Waldo-Benítez, Luis Carlos Padierna, Pablo Ceron & Modesto A. Sosa - DOI: https://doi.org/10.1007/s00521-023-09163-y
+
+11. Prediction of dementia using machine learning model and Performance improvement with cuckoo algorithm BY
+Sivakani Rajayyan, Syed Masood Mohamed Mustafa - DOI: 10.11591/ijece.v13i4.pp4623-4632
+
+12. A Novel Approach Utilizing Machine Learning for the Early Diagnosis of Alzheimer's Disease BY
+Khandaker Mohammad Mohi Uddin, Mir Jafikul Alam, Jannat-E-Anawar, Md Ashraf Uddin & Sunil Aryal - DOI: https://doi.org/10.1007/s44174-023-00078-9
+
+13. Systematic comparison of 3D Deep learning and classical machine learning explanations for Alzheimer’s Disease detection BY
+Louise Bloch, Christoph M. Friedrich - DOI: https://doi.org/10.1016/j.compbiomed.2024.108029
+
+14. Characterizing the clinical heterogeneity of early symptomatic Alzheimer’s disease: a data-driven machine learning approach BY
+Xiwu Wang; Teng Ye, Deguo Jiang, Wenjun Zhou, Jie Zhang - DOI: https://doi.org/10.3389/fnagi.2024.1410544
+ 
+15. Real-world prediction of preclinical Alzheimer’s disease with a deep generative model BY
+Uiwon Hwang, Sung-Woo Kim, Dahuin Jung, SeungWook Kim, Hyejoo Lee, Sang Won Seo, Joon-Kyung Seong, Sungroh Yoon - DOI: https://doi.org/10.1016/j.artmed.2023.102654
+
+16. Development of a robust parallel and multi-composite machine learning model for improved diagnosis of Alzheimer's disease: correlation with dementia-associated drug usage and AT(N) protein biomarkers BY
+Afreen Khan, Swaleha Zubair, Mohammed Shuaib, Abdullah Sheneamer, Shadab Alam, Basem Assiri - DOI: https://doi.org/10.3389/fnins.2024.1391465
+
+17. A Machine Learning Framework for Predicting Dementia and Mild Cognitive Impairment BY
+Daniel Stamate; Wajdi Alghamdi; Jeremy Ogg; Richard Hoile; Fionn Murtagh - DOI: 10.1109/ICMLA.2018.00107
+
+18. Comparative Analysis of Various Machine Learning Algorithms for Detecting Dementia BY
+Deepika Bansal, Rita Chhikara, Kavita Khanna, Poonam Gupta - DOI: https://doi.org/10.1016/j.procs.2018.05.102
+
+19. Dementia prediction in the general population using clinically accessible variables: a proof-of-concept study using machine learning. The AGES-Reykjavik study BY
+Emma L. Twait, Constanza L. Andaur Navarro, Vilmunur Gudnason, Yi-Han Hu, Lenore J. Launer & Mirjam I. Geerlings - DOI: https://doi.org/10.1186/s12911-023-02244-x
+
+20. A longitudinal multi-modal dataset for dementia monitoring and diagnosis BY
+Bo Wang, Adam Tsakalidis, Maria Wolters, Matthew Purver, Arkaitz Zubiaga - DOI: https://arxiv.org/html/2109.01537v2/#S4
+
+21. Can Survival Prediction Be Improved By Merging Gene Expression Data Sets? BY
+Haleh Yasrebi, Peter Sperisen, Viviane Praz, Philipp Bucher - DOI: https://doi.org/10.1371/journal.pone.0007431
+
+NOTE: THE REFERENCES IN THE INTERIM REPORT ARE PARTS OF THE PAPERS I HAVE SELECTED, YOU CAN USE THEM FOR IN-TEXT CITATION IF NEEDED
+
+THE PAPERS I HAVE SELECTED FOR IN-TEXT CITATION ENDS HERE
+
+
+THE FOUR CODES STARTS HERE
+
+CODE ONE 1 (THE MERGED DATASET)
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.impute import SimpleImputer
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.svm import SVC
+from sklearn.linear_model import LogisticRegression
+from sklearn.naive_bayes import GaussianNB
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.neural_network import MLPClassifier
+from sklearn.metrics import accuracy_score, f1_score, precision_score, confusion_matrix
+
+# Step 1: Load the datasets
+oasis_cross_sectional = pd.read_csv('oasis_cross-sectional.csv')
+oasis_longitudinal = pd.read_csv('oasis_longitudinal.csv')
+adni = pd.read_csv('ADNI.csv')
+
+# Step 2: Preprocessing and Merging
+# Select relevant columns from each dataset
+oasis_cross_sectional = oasis_cross_sectional[['ID', 'Age', 'Gender', 'EDUC', 'MMSE', 'CDR', 'eTIV', 'nWBV']]
+oasis_longitudinal = oasis_longitudinal[['Subject ID', 'Age', 'Gender', 'EDUC', 'MMSE', 'CDR', 'eTIV', 'nWBV']]
+adni = adni[['ID', 'Age', 'Gender', 'EDUC', 'MMSE', 'CDR', 'DX']]
+
+# Rename columns for consistency
+oasis_longitudinal = oasis_longitudinal.rename(columns={'Subject ID': 'ID'})
+adni = adni.rename(columns={'ID': 'ID', 'DX': 'Diagnosis'})
+
+# Concatenate datasets
+merged_data = pd.concat([oasis_cross_sectional, oasis_longitudinal, adni], ignore_index=True)
+
+# Step 3: Handle Missing Values
+# Identify numeric and categorical columns
+numeric_columns = merged_data.select_dtypes(include=[np.number]).columns.tolist()
+categorical_columns = merged_data.select_dtypes(include=['object']).columns.tolist()
+categorical_columns = [col for col in categorical_columns if col != 'ID']  # Exclude 'ID' from imputation
+
+# Impute numerical columns with mean
+num_imputer = SimpleImputer(strategy='mean')
+merged_data[numeric_columns] = num_imputer.fit_transform(merged_data[numeric_columns])
+
+# Impute categorical columns with mode
+cat_imputer = SimpleImputer(strategy='most_frequent')
+merged_data[categorical_columns] = cat_imputer.fit_transform(merged_data[categorical_columns])
+
+# Step 4: Preprocessing Categorical Data
+# Encode Gender
+le_gender = LabelEncoder()
+merged_data['Gender'] = le_gender.fit_transform(merged_data['Gender'])
+
+# Binary encoding for the Diagnosis column
+merged_data['Diagnosis'] = merged_data['Diagnosis'].apply(lambda x: 1 if x == 'Dementia' else 0)
+
+# Step 5: Feature Scaling
+scaler = StandardScaler()
+scaled_features = ['Age', 'EDUC', 'MMSE', 'CDR', 'eTIV', 'nWBV']
+merged_data[scaled_features] = scaler.fit_transform(merged_data[scaled_features])
+
+# Ensure Age is numeric
+merged_data['Age'] = pd.to_numeric(merged_data['Age'], errors='coerce')
+
+# Step 6: Prepare Data for Modeling
+X = merged_data.drop(columns=['ID', 'Diagnosis'])
+y = merged_data['Diagnosis']
+
+# Step 7: Split the Data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Step 8: Define classifiers
+classifiers = {
+    'Random Forest': RandomForestClassifier(n_estimators=100, random_state=42),
+    'SVM': SVC(kernel='rbf', random_state=42),
+    'Logistic Regression': LogisticRegression(random_state=42),
+    'Gradient Boosting': GradientBoostingClassifier(random_state=42),
+    'Naive Bayes': GaussianNB(),
+    'Decision Tree': DecisionTreeClassifier(random_state=42),
+    'MLP': MLPClassifier(random_state=42, max_iter=1000)
+}
+
+# Step 9: Train and evaluate models
+for name, clf in classifiers.items():
+    print(f"\nTraining {name}...")
+    clf.fit(X_train, y_train)
+    y_pred = clf.predict(X_test)
+    
+    # Calculate metrics
+    accuracy = accuracy_score(y_test, y_pred)
+    f1 = f1_score(y_test, y_pred)
+    precision = precision_score(y_test, y_pred)
+    conf_matrix = confusion_matrix(y_test, y_pred)
+    
+    # Print results
+    print(f"{name} Results:")
+    print(f"Accuracy: {accuracy:.2f}")
+    print(f"F1 Score: {f1:.2f}")
+    print(f"Precision: {precision:.2f}")
+    print("Confusion Matrix:")
+    print(conf_matrix)
+
+CODE TWO 2 (THE MERGED DATASET WITH AGE GROUPS)
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.impute import SimpleImputer
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.svm import SVC
+from sklearn.linear_model import LogisticRegression
+from sklearn.naive_bayes import GaussianNB
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.neural_network import MLPClassifier
+from sklearn.metrics import classification_report, confusion_matrix
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Step 1: Load the datasets
+oasis_cross_sectional = pd.read_csv('oasis_cross-sectional.csv')
+oasis_longitudinal = pd.read_csv('oasis_longitudinal.csv')
+adni = pd.read_csv('ADNI.csv')
+
+# Step 2: Preprocessing and Merging
+oasis_cross_sectional = oasis_cross_sectional[['ID', 'Age', 'Gender', 'EDUC', 'MMSE', 'CDR', 'eTIV', 'nWBV']]
+oasis_longitudinal = oasis_longitudinal[['Subject ID', 'Age', 'Gender', 'EDUC', 'MMSE', 'CDR', 'eTIV', 'nWBV']]
+adni = adni[['ID', 'Age', 'Gender', 'EDUC', 'MMSE', 'CDR', 'DX']]
+
+oasis_longitudinal = oasis_longitudinal.rename(columns={'Subject ID': 'ID'})
+adni = adni.rename(columns={'ID': 'ID', 'DX': 'Diagnosis'})
+
+merged_data = pd.concat([oasis_cross_sectional, oasis_longitudinal, adni], ignore_index=True)
+
+# Step 3: Handle Missing Values
+numeric_columns = merged_data.select_dtypes(include=[np.number]).columns.tolist()
+categorical_columns = merged_data.select_dtypes(include=['object']).columns.tolist()
+categorical_columns = [col for col in categorical_columns if col != 'ID']
+
+num_imputer = SimpleImputer(strategy='mean')
+merged_data[numeric_columns] = num_imputer.fit_transform(merged_data[numeric_columns])
+
+cat_imputer = SimpleImputer(strategy='most_frequent')
+merged_data[categorical_columns] = cat_imputer.fit_transform(merged_data[categorical_columns])
+
+# Step 4: Preprocessing Categorical Data
+le_gender = LabelEncoder()
+merged_data['Gender'] = le_gender.fit_transform(merged_data['Gender'])
+
+merged_data['Diagnosis'] = merged_data['Diagnosis'].apply(lambda x: 1 if x == 'Dementia' else 0)
+
+# Step 5: Feature Scaling (excluding Age)
+scaler = StandardScaler()
+scaled_features = ['EDUC', 'MMSE', 'CDR', 'eTIV', 'nWBV']
+merged_data[scaled_features] = scaler.fit_transform(merged_data[scaled_features])
+
+# Ensure Age is numeric
+merged_data['Age'] = pd.to_numeric(merged_data['Age'], errors='coerce')
+
+# Step 6: Split data into age groups
+group1 = merged_data[merged_data['Age'] < 65]
+group2 = merged_data[merged_data['Age'] >= 65]
+
+print(f"Size of group1 (0-64): {len(group1)}")
+print(f"Size of group2 (65+): {len(group2)}")
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy import stats
+
+# Insert this code after merging the datasets and before the preprocessing steps
+
+def perform_eda(data):
+    print("Exploratory Data Analysis")
+    print("========================")
+
+    # Basic information about the dataset
+    print("\n1. Dataset Information:")
+    print(data.info())
+
+    # Summary statistics
+    print("\n2. Summary Statistics:")
+    print(data.describe())
+
+    # Missing values
+    print("\n3. Missing Values:")
+    missing_values = data.isnull().sum()
+    print(missing_values[missing_values > 0])
+
+    # Unique values in categorical columns
+    print("\n4. Unique Values in Categorical Columns:")
+    categorical_columns = data.select_dtypes(include=['object']).columns
+    for col in categorical_columns:
+        print(f"{col}: {data[col].nunique()} unique values")
+        print(data[col].value_counts())
+        print()
+
+    # Distribution of numerical features
+    numerical_columns = data.select_dtypes(include=[np.number]).columns
+    plt.figure(figsize=(20, 15))
+    for i, col in enumerate(numerical_columns, 1):
+        plt.subplot(3, 3, i)
+        sns.histplot(data[col], kde=True)
+        plt.title(f'Distribution of {col}')
+    plt.tight_layout()
+    plt.show()
+
+    # Box plots for numerical features
+    plt.figure(figsize=(20, 15))
+    for i, col in enumerate(numerical_columns, 1):
+        plt.subplot(3, 3, i)
+        sns.boxplot(y=data[col])
+        plt.title(f'Box Plot of {col}')
+    plt.tight_layout()
+    plt.show()
+
+    # Correlation heatmap
+    plt.figure(figsize=(12, 10))
+    sns.heatmap(data[numerical_columns].corr(), annot=True, cmap='coolwarm', linewidths=0.5)
+    plt.title('Correlation Heatmap')
+    plt.show()
+
+    # Age distribution
+    plt.figure(figsize=(10, 6))
+    sns.histplot(data['Age'], kde=True, bins=30)
+    plt.title('Age Distribution')
+    plt.show()
+
+    # Gender distribution
+    plt.figure(figsize=(8, 6))
+    data['Gender'].value_counts().plot(kind='bar')
+    plt.title('Gender Distribution')
+    plt.ylabel('Count')
+    plt.show()
+
+    # Diagnosis distribution
+    plt.figure(figsize=(8, 6))
+    data['Diagnosis'].value_counts().plot(kind='bar')
+    plt.title('Diagnosis Distribution')
+    plt.ylabel('Count')
+    plt.show()
+
+    # Age vs MMSE scatter plot
+    plt.figure(figsize=(10, 6))
+    sns.scatterplot(x='Age', y='MMSE', hue='Diagnosis', data=data)
+    plt.title('Age vs MMSE Score')
+    plt.show()
+
+    # Education vs MMSE scatter plot
+    plt.figure(figsize=(10, 6))
+    sns.scatterplot(x='EDUC', y='MMSE', hue='Diagnosis', data=data)
+    plt.title('Education vs MMSE Score')
+    plt.show()
+
+    # MMSE distribution by Diagnosis
+    plt.figure(figsize=(10, 6))
+    sns.boxplot(x='Diagnosis', y='MMSE', data=data)
+    plt.title('MMSE Score Distribution by Diagnosis')
+    plt.show()
+
+    # Age distribution by Diagnosis
+    plt.figure(figsize=(10, 6))
+    sns.boxplot(x='Diagnosis', y='Age', data=data)
+    plt.title('Age Distribution by Diagnosis')
+    plt.show()
+
+    # Pairplot for key features
+    sns.pairplot(data[['Age', 'EDUC', 'MMSE', 'CDR', 'eTIV', 'nWBV', 'Diagnosis']], hue='Diagnosis')
+    plt.suptitle('Pairplot of Key Features', y=1.02)
+    plt.show()
+
+    # Statistical tests
+    print("\n5. Statistical Tests:")
+    # T-test for Age between Dementia and Non-Dementia groups
+    dementia = data[data['Diagnosis'] == 1]['Age']
+    non_dementia = data[data['Diagnosis'] == 0]['Age']
+    t_stat, p_value = stats.ttest_ind(dementia, non_dementia)
+    print(f"T-test for Age between Dementia and Non-Dementia groups:")
+    print(f"T-statistic: {t_stat}, p-value: {p_value}")
+
+    # Chi-square test for Gender and Diagnosis
+    gender_diagnosis = pd.crosstab(data['Gender'], data['Diagnosis'])
+    chi2, p_value, dof, expected = stats.chi2_contingency(gender_diagnosis)
+    print(f"\nChi-square test for Gender and Diagnosis:")
+    print(f"Chi2 statistic: {chi2}, p-value: {p_value}")
+
+# Call the EDA function
+perform_eda(merged_data)
+
+# Function to train and evaluate models
+def train_and_evaluate(X, y, group_name):
+    if len(X) == 0 or len(y) == 0:
+        print(f"No data available for {group_name}")
+        return
+    if len(y.unique()) < 2:
+        print(f"Only one class present in {group_name}. Cannot perform classification.")
+        return
+    
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    
+    classifiers = {
+        'Random Forest': RandomForestClassifier(n_estimators=100, random_state=42),
+        'SVM': SVC(kernel='rbf', random_state=42),
+        'Logistic Regression': LogisticRegression(random_state=42),
+        'Gradient Boosting': GradientBoostingClassifier(random_state=42),
+        'Naive Bayes': GaussianNB(),
+        'Decision Tree': DecisionTreeClassifier(random_state=42),
+        'MLP': MLPClassifier(random_state=42, max_iter=1000)
+    }
+    
+    for name, clf in classifiers.items():
+        print(f"\nTraining {name} for {group_name}...")
+        clf.fit(X_train, y_train)
+        y_pred = clf.predict(X_test)
+        
+        print(f"{name} Classification Report:")
+        print(classification_report(y_test, y_pred))
+        
+        cm = confusion_matrix(y_test, y_pred)
+        plt.figure(figsize=(10,7))
+        sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
+        plt.xlabel('Predicted')
+        plt.ylabel('Actual')
+        plt.title(f'Confusion Matrix - {name} ({group_name})')
+        plt.show()
+
+# Train and evaluate for each age group
+for group, name in [(group1, "Age Group 1 (0-64)"), (group2, "Age Group 2 (65+)")]:
+    print(f"\n\n--- Results for {name} ---")
+    X = group.drop(columns=['ID', 'Diagnosis', 'Age'])
+    y = group['Diagnosis']
+    train_and_evaluate(X, y, name)
+
+CODE THREE 3 (LOADING EACH INDIVIDUAL DATASETS)
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.neural_network import MLPClassifier
+from sklearn.metrics import accuracy_score
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import LabelEncoder, KBinsDiscretizer
+from sklearn.feature_selection import RFE
+
+# Load the dataset (assuming the dataset is in CSV format)
+# Replace 'dataset.csv' with the actual dataset file path
+data = pd.read_csv('ADNI.csv')
+
+# Separate numeric and non-numeric columns
+numeric_cols = data.select_dtypes(include=['float64', 'int64']).columns
+non_numeric_cols = data.select_dtypes(include=['object']).columns
+
+# Data Pre-processing
+# Fill missing values for numeric data with the average values
+imputer_numeric = SimpleImputer(strategy='mean')
+data[numeric_cols] = imputer_numeric.fit_transform(data[numeric_cols])
+
+# Fill missing values for non-numeric data with the most frequent values
+imputer_non_numeric = SimpleImputer(strategy='most_frequent')
+data[non_numeric_cols] = imputer_non_numeric.fit_transform(data[non_numeric_cols])
+
+# Encode non-numeric data
+label_encoders = {}
+for col in non_numeric_cols:
+    le = LabelEncoder()
+    data[col] = le.fit_transform(data[col])
+    label_encoders[col] = le
+
+# Convert continuous target variable to discrete classes
+# Replace 'CDR' with the actual target column name
+kbins = KBinsDiscretizer(n_bins=4, encode='ordinal', strategy='kmeans')
+data['CDR'] = kbins.fit_transform(data[['CDR']]).astype(int)
+
+# Feature Selection
+X = data.drop('CDR', axis=1)  # Replace 'CDR' with the actual target column name
+y = data['CDR']  # Replace 'CDR' with the actual target column name
+
+# Initialize the model for feature selection
+base_model = RandomForestClassifier()
+
+# Apply Recursive Feature Elimination (RFE) with the base model
+# Select a number of features, you can adjust n_features_to_select to match desired feature count
+rfe = RFE(estimator=base_model, n_features_to_select=4)
+X_selected = rfe.fit_transform(X, y)
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X_selected, y, test_size=0.2, random_state=42)
+
+# Classification Models
+classifiers = {
+    'J48': DecisionTreeClassifier(),
+    'Random Forest': RandomForestClassifier(),
+    'Naive Bayes': GaussianNB(),
+    'Multilayer Perceptron': MLPClassifier(max_iter=1000)
+}
+
+# Train and evaluate each classifier
+results = {}
+for name, clf in classifiers.items():
+    clf.fit(X_train, y_train)
+    y_pred = clf.predict(X_test)
+    accuracy = accuracy_score(y_test, y_pred)
+    results[name] = accuracy
+
+# Print the classification accuracies
+for name, accuracy in results.items():
+    print(f'{name} Classification Accuracy: {accuracy * 100:.2f}%')
+
+
+CODE FOUR 4 (LOADING EACH INDIVIDUAL DATASETS WITH AGE GROUPING)
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.neural_network import MLPClassifier
+from sklearn.metrics import accuracy_score
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import LabelEncoder, KBinsDiscretizer
+from sklearn.feature_selection import RFE
+
+# Load the dataset (assuming the dataset is in CSV format)
+# Replace 'dataset.csv' with the actual dataset file path
+data = pd.read_csv('oasis_cross-sectional.csv')
+
+# Separate numeric and non-numeric columns
+numeric_cols = data.select_dtypes(include=['float64', 'int64']).columns
+non_numeric_cols = data.select_dtypes(include=['object']).columns
+
+
+# Data Pre-processing
+# Fill missing values for numeric data with the average values
+imputer_numeric = SimpleImputer(strategy='mean')
+data[numeric_cols] = imputer_numeric.fit_transform(data[numeric_cols])
+
+# Fill missing values for non-numeric data with the most frequent values
+imputer_non_numeric = SimpleImputer(strategy='most_frequent')
+data[non_numeric_cols] = imputer_non_numeric.fit_transform(data[non_numeric_cols])
+
+# Encode non-numeric data
+label_encoders = {}
+for col in non_numeric_cols:
+    le = LabelEncoder()
+    data[col] = le.fit_transform(data[col])
+    label_encoders[col] = le
+
+# Convert continuous target variable to discrete classes
+# Replace 'CDR' with the actual target column name
+kbins = KBinsDiscretizer(n_bins=4, encode='ordinal', strategy='kmeans')
+data['CDR'] = kbins.fit_transform(data[['CDR']]).astype(int)
+
+# Feature Selection
+X = data.drop('CDR', axis=1)  # Replace 'CDR' with the actual target column name
+y = data['CDR']  # Replace 'CDR' with the actual target column name
+
+# Initialize the model for feature selection
+base_model = RandomForestClassifier()
+
+# Apply Recursive Feature Elimination (RFE) with the base model
+# Select a number of features, you can adjust n_features_to_select to match desired feature count
+rfe = RFE(estimator=base_model, n_features_to_select=4)
+X_selected = rfe.fit_transform(X, y)
+
+# Split the data by age groups
+age_column = 'Age'  # Replace with the actual column name for age in your dataset
+data_under_65 = data[data[age_column] <= 65]
+data_above_65 = data[data[age_column] > 65]
+
+# Define a function to train and evaluate models for a given dataset
+def train_and_evaluate(X, y):
+    # Split the data into training and testing sets
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    
+    # Classification Models
+    classifiers = {
+        'J48': DecisionTreeClassifier(),
+        'Random Forest': RandomForestClassifier(),
+        'Naive Bayes': GaussianNB(),
+        'Multilayer Perceptron': MLPClassifier(max_iter=1000)
+    }
+
+    # Train and evaluate each classifier
+    results = {}
+    for name, clf in classifiers.items():
+        clf.fit(X_train, y_train)
+        y_pred = clf.predict(X_test)
+        accuracy = accuracy_score(y_test, y_pred)
+        results[name] = accuracy
+
+    return results
+
+# Separate features and target for each age group
+X_under_65 = data_under_65.drop('CDR', axis=1)
+y_under_65 = data_under_65['CDR']
+
+X_above_65 = data_above_65.drop('CDR', axis=1)
+y_above_65 = data_above_65['CDR']
+
+# Apply feature selection (RFE) to both groups
+X_under_65_selected = rfe.fit_transform(X_under_65, y_under_65)
+X_above_65_selected = rfe.fit_transform(X_above_65, y_above_65)
+
+# Train and evaluate models for both age groups
+results_under_65 = train_and_evaluate(X_under_65_selected, y_under_65)
+results_above_65 = train_and_evaluate(X_above_65_selected, y_above_65)
+
+# Print the classification accuracies for age group 0-65
+print("Classification Accuracies for Age Group 0-65:")
+for name, accuracy in results_under_65.items():
+    print(f'{name} Classification Accuracy: {accuracy * 100:.2f}%')
+
+# Print the classification accuracies for age group 65-200
+print("\nClassification Accuracies for Age Group 65-200:")
+for name, accuracy in results_above_65.items():
+    print(f'{name} Classification Accuracy: {accuracy * 100:.2f}%')
+
+print(f'Number of samples in age group 0-65: {len(data_under_65)}')
+print(f'Number of samples in age group 65-200: {len(data_above_65)}')
+
+print(data_under_65['CDR'].value_counts())
+print(data_above_65['CDR'].value_counts())
+
+THE FOUR CODES ENDS HERE
+
+
+PLEASE HOLD THESE INFORMATION IN MEMORY WHILE I FETCH AND FEED YOU THE FINAL REPORT STRUCTURE CHAPTER BY CHAPTER SO YOU CAN PRODUCE THE REPORT FOR ME. 
+
+
+
+
+
+
+
+
+
+

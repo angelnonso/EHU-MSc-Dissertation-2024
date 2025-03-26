@@ -1,0 +1,104 @@
+The features and first 11 records of oasis_cross-sectional.csv dataset are;
+ID	Gender	Hand	Age	EDUC	SES	MMSE	CDR	eTIV	nWBV	ASF	Delay
+ID	Gender	Hand	Age	EDUC	SES	MMSE	CDR	eTIV	nWBV	ASF	Delay
+OAS1_0001_MR1	F	R	74	2	3	29	0	1344	0.743	1.306	N/A
+OAS1_0002_MR1	F	R	55	4	1	29	0	1147	0.81	1.531	N/A
+OAS1_0003_MR1	F	R	73	4	3	27	0.5	1454	0.708	1.207	N/A
+OAS1_0004_MR1	M	R	28					1588	0.803	1.105	N/A
+OAS1_0005_MR1	M	R	18					1737	0.848	1.01	N/A
+OAS1_0006_MR1	F	R	24					1131	0.862	1.551	N/A
+OAS1_0007_MR1	M	R	21					1516	0.83	1.157	N/A
+OAS1_0009_MR1	F	R	20					1505	0.843	1.166	N/A
+OAS1_0010_MR1	M	R	74	5	2	30	0	1636	0.689	1.073	N/A
+OAS1_0011_MR1	F	R	52	3	2	30	0	1321	0.827	1.329	N/A
+OAS1_0012_MR1	M	R	30					1574	0.842	1.115	N/A
+
+
+
+The features and first 11 records of oasis_longitudinal.csv dataset are;
+ID	Delay	Gender	Hand	Age	EDUC	SES	MMSE	CDR	eTIV	nWBV	ASF
+OAS2_0001	0	M	R	87	14	2	27	0	1987	0.696	0.883
+OAS2_0001	457	M	R	88	14	2	30	0	2004	0.681	0.876
+OAS2_0002	0	M	R	75	12		23	0.5	1678	0.736	1.046
+OAS2_0002	560	M	R	76	12		28	0.5	1738	0.713	1.01
+OAS2_0002	1895	M	R	80	12		22	0.5	1698	0.701	1.034
+OAS2_0004	0	F	R	88	18	3	28	0	1215	0.71	1.444
+OAS2_0004	538	F	R	90	18	3	27	0	1200	0.718	1.462
+OAS2_0005	0	M	R	80	12	4	28	0	1689	0.712	1.039
+OAS2_0005	1010	M	R	83	12	4	29	0.5	1701	0.711	1.032
+OAS2_0005	1603	M	R	85	12	4	30	0	1699	0.705	1.033
+OAS2_0007	0	M	R	71	16		28	0.5	1357	0.748	1.293
+
+
+
+The features and first 11 records of ADNI.csv dataset are;
+ID	Age	Gender	Educ	PTMARRY	APOE4	TAU	CDR	MMSE	MOCA	DX
+2	74	M	16	Married	0		0	28		CN
+3	81	M	18	Married	1	239.7	4.5	20		Dementia
+3	81	M	18	Married	1		6	24		Dementia
+3	81	M	18	Married	1	251.7	3.5	17		Dementia
+3	81	M	18	Married	1		8	19		Dementia
+4	68	M	10	Married	0	153.1	1	27		MCI
+4	68	M	10	Married	0		0.5	28		MCI
+4	68	M	10	Married	0	159.7	1	26		MCI
+4	68	M	10	Married	0		1	27		MCI
+4	68	M	10	Married	0		1	25		MCI
+5	74	M	16	Married	0	337	0	29		CN
+
+
+After merging this dataset, what is the merged dataset look like
+
+I want to merge these datasets, preprocess, handle missing values, select appropriate features (feature extraction) and build a model that give accuracy, f1 score, precision, etc
+
+
+
+
+Age 
+0.138659
+-2.032114
+0.024408
+-5.116896
+-6.259408
+
+Classification accuracy on individual dataset
+
+OASIS_cross-sectional dataset output with CDR as target
+J48 Classification Accuracy: 90.91%
+Random Forest Classification Accuracy: 89.77%
+Naive Bayes Classification Accuracy: 92.05%
+Multilayer Perceptron Classification Accuracy: 84.09%
+
+OASIS_longitudinal dataset output with CDR as target
+J48 Classification Accuracy: 72.00%
+Random Forest Classification Accuracy: 70.67%
+Naive Bayes Classification Accuracy: 53.33%
+Multilayer Perceptron Classification Accuracy: 77.33%
+
+ADNI dataset output with CDR as target
+J48 Classification Accuracy: 88.89%
+Random Forest Classification Accuracy: 90.26%
+Naive Bayes Classification Accuracy: 89.04%
+Multilayer Perceptron Classification Accuracy: 84.90%
+
+
+
+
+
+
+print("NaN values in X before preprocessing:", X.isna().sum().sum())
+print("NaN values in y before preprocessing:", y.isna().sum())
+-------------
+
+# Check for NaN values after preprocessing
+print("NaN values in X after preprocessing:", X_preprocessed_df.isna().sum().sum())
+
+# Ensure there are no NaN values
+X_preprocessed_clean = X_preprocessed_df.fillna(0).values
+
+# Double-check that the target variable y has no NaNs
+y = y.fillna(method='ffill')  # Forward fill any NaN in y if present
+print("NaN values in y after filling:", y.isna().sum())
+
+
+
+

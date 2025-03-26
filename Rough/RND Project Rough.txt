@@ -1,0 +1,230 @@
+Research and Development Project
+
+
+
+
+
+Students will be directed to a wide range of reading, which will be specific to their project, however the following project/research texts will be useful.
+
+Bell, J. & Waters, S., 2018, Doing your Research Project: A guide for first-time researchers, 7th Edition, OUP.
+
+Biggam, J., 2021, Succeeding With Your Master's Dissertation, Open University Press.
+
+Gary, T., 2017, How to Do Your Research Project: A Guide for Students, SAGE Publications Ltd.
+
+Zobel,  J., 2015, Writing for Computer Science, Springer
+
+Literature:
+
+Boland, A., Cherry, G., & Dickson, R., 2017, Doing a Systematic Review: A Student's Guide, SAGE Publications Ltd.
+
+Bott,  F., 2014, Professional Issues in Information Technology, 2nd edition, BCS, The Chartered Institute for IT.
+
+Creswell, J.W., & Creswell J.D., 2018, Research Design: Qualitative, Quantitative, and Mixed Methods, SAGE Publications, Inc.
+
+Dawson, C., 2019, Introduction to Research Methods 5th Edition: A Practical Guide for Anyone Undertaking a Research Project, Robinson.
+
+Field, A., 2018, Discovering Statistics Using IBM SPSS Statistics, SAGE Publications Ltd.
+
+Gough,  D., Oliver,  S. & Thomas, J., 2017, An Introduction to Systematic Reviews, SAGE Publications Ltd.
+
+Gray, D. E., 2017, Doing Research in the Real World, SAGE Publications Ltd.
+
+Hughes, B., 2019, Project Management for IT-Related Projects, 3rd edition, BCS, The Chartered Institute for IT.
+
+Kara, H., 2018, Research ethics in the real world: Euro-Western and Indigenous Perspectives, Policy Press.
+
+Katz, L., 2018, Critical Thinking and Persuasive Writing for Postgraduates, Red Globe Press.
+
+Quinn,  M., 2016, Ethics for the Information Age, 7th Edition, Pearson.
+
+Sharp, H., Preece, J., & Rogers,  Y., 2019, Interaction Design: Beyond Human-Computer Interaction, 5th Edition, Wiley.
+
+Townsend, K. (Editor), & Saunders,  M. N. K. (Editor), 2018, How to Keep Your Research Project on Track: Insights from When Things Go Wrong (How To Guides), Edward Elgar Publishing Ltd.
+
+Villafiorita, A., 2014, Introduction to Software Project Management, Auerbach Publications.
+
+Wallace, M. & Wray, A., 2021, Critical Reading and Writing for Postgraduates (Student Success), 4th Edition, SAGE Publications Ltd.
+
+Yin, R. K., 2018, Case Study Research and Applications: Design and Methods, SAGE Publications, Inc.
+Key journals
+
+Students should utilise both electronic journals and those in hard copy to support their research for this module.
+
+#
+#
+#
+
+IEEE Explore Digital Library
+
+Science Direct Elsevier
+
+ACM Digital Library
+
+Springer
+
+============LIMITATIONS AND FEATURE DIRECTION==============
+
+1. Merge Data across continents: Future studies should aim to obtain and merge dataset from randomly selected countries from African, Europe, Asia, America, etc. to obtain a wider variety of data distribution would help globalise the model
+
+2. Collaboration with domain professionals: Domain knowledge is very important, collaboration will help in reducing time spent on research and improve the quality of the outcome.
+
+3. 
+
+
+============THINGS TO REMEMBER==============
+
+1. Remember to use the paper; 'A Machine Learning Framework for Predicting Dementia and Mild Cognitive Impairment' for reporting he ADNIMERGE dataset as it used same dataset and reported it appropriately.
+
+2. Remember to report that you recieved approval before downloading those datasets from selected sources
+
+
+
+
+
+the interim report, 
+the learning outcome with its assessment criteria, 
+the papers I have selected for in-text citations, 
+the codes, and 
+the final report structure. 
+
+
+
+
+Search Keywords:
+machine learning dementia prediction oasis dataset
+machine learning dementia prediction ADNIMERGE dataset
+machine learning dementia prediction by merging ADNIMERGE dataset and oasis
+combining or merging two or more datasets to achieve higher classification result
+
+
+(Bari Antor et al., 2021)
+
+This chapter outlines the implementation of the project and the testing procedures applied to ensure the models' reliability and validity. The implementation phase involved executing the methodologies discussed in Chapter 3, including data preprocessing, model training, and evaluation. The testing phase followed a systematic approach to validate model performance using both standard and "live" datasets, employing techniques such as cross-validation, confusion matrices, and various evaluation metrics.
+
+#### 4.1 Implementation Process
+
+The implementation was executed in several phases, aligning with the methodological framework established in the previous chapter. The phases include data integration, preprocessing, model training, and age group analysis.
+
+##### 4.1.1 Data Integration and Preprocessing
+
+The first step involved integrating the datasets—OASIS cross-sectional, OASIS longitudinal, and ADNI—into a unified dataframe. This integration required:
+
+- **Column Standardisation**: Ensuring consistency in naming conventions across datasets.
+- **Concatenation**: Merging datasets based on common attributes.
+- **Data Type Conversion**: Converting specific columns (e.g., age) into numerical formats to avoid inconsistencies.
+
+Subsequently, preprocessing was performed:
+
+1. **Missing Value Imputation**: Numerical missing values were filled using the mean, and categorical missing values with the most frequent value. The `SimpleImputer` from `sklearn` was employed to automate this process across relevant columns.
+2. **Categorical Encoding**: Label encoding was used to convert categorical features into numerical form. The `LabelEncoder` from `sklearn` facilitated the transformation of features such as 'Gender' and 'Diagnosis' into binary forms.
+3. **Feature Scaling**: Using `StandardScaler`, all numerical features were standardised to ensure uniformity in the scale of input data, which is essential for models like SVM and neural networks.
+
+##### 4.1.2 Exploratory Data Analysis (EDA) Implementation
+
+EDA was implemented to understand the dataset's characteristics and identify any potential issues such as outliers or multicollinearity. Python libraries such as `pandas`, `matplotlib`, and `seaborn` were employed for data visualisation and correlation analysis. Key aspects of EDA included:
+
+- **Descriptive Statistics**: Calculating mean, median, standard deviation, and range for numerical features to understand their distribution.
+- **Visualisation**: Creating histograms, scatter plots, and box plots to visualise the distribution and identify outliers.
+- **Correlation Matrix**: Generating a heatmap to visualise correlations among numerical variables, aiding in feature selection and engineering decisions.
+
+##### 4.1.3 Model Training and Evaluation
+
+Seven machine learning models were trained using the preprocessed dataset. Each model was implemented using the `scikit-learn` library, and training was conducted on an 80-20 train-test split.
+
+1. **Random Forest Classifier**: Implemented using `RandomForestClassifier` from `sklearn.ensemble`. Parameters such as the number of estimators and max depth were tuned using grid search.
+2. **Support Vector Machine (SVM)**: Utilised the `SVC` class from `sklearn.svm`, with the radial basis function (RBF) kernel chosen to handle non-linear relationships in the data.
+3. **Logistic Regression**: Implemented using `LogisticRegression` from `sklearn.linear_model`, serving as a baseline for comparison.
+4. **Gradient Boosting Classifier**: Implemented with `GradientBoostingClassifier` from `sklearn.ensemble`, optimising hyperparameters such as learning rate and number of boosting stages.
+5. **Naive Bayes**: The `GaussianNB` class from `sklearn.naive_bayes` was employed, considering its simplicity and effectiveness for normally distributed data.
+6. **Decision Tree Classifier**: Utilised `DecisionTreeClassifier` from `sklearn.tree`, with depth and splitting criteria optimised to reduce overfitting.
+7. **Multi-layer Perceptron (MLP)**: Implemented using `MLPClassifier` from `sklearn.neural_network`, with a single hidden layer and ReLU activation function.
+
+Each model was evaluated on the test set, and metrics such as accuracy, precision, recall, F1-score, and confusion matrix were computed to assess performance.
+
+##### 4.1.4 Age Group Analysis Implementation
+
+To explore the impact of age on dementia prediction, the dataset was segmented into two age groups:
+
+- **Group 1 (Age < 65)**
+- **Group 2 (Age ≥ 65)**
+
+Each subset was used to train and evaluate models independently. The same preprocessing and training steps were applied, and performance metrics were compared between the two age groups.
+
+#### 4.2 Testing Methodology
+
+Testing involved validating the models' performance using cross-validation, confusion matrices, and performance metrics. The testing aimed to ensure models' robustness and reliability, particularly in distinguishing between dementia and non-dementia cases.
+
+##### 4.2.1 Cross-Validation
+
+Cross-validation was employed to validate model performance across different subsets of the data. K-fold cross-validation with `k=5` was used to:
+
+- **Assess Generalisability**: Ensuring that the models perform consistently across different folds of the dataset, thereby mitigating the risk of overfitting.
+- **Hyperparameter Tuning**: Optimising model parameters to improve performance.
+
+Each fold involved training the model on 80% of the data and testing on the remaining 20%, cycling through all folds. The average performance metrics across folds provided a reliable estimate of the models' generalisation capabilities.
+
+##### 4.2.2 Confusion Matrix and Metrics Evaluation
+
+The confusion matrix was used to evaluate the models' performance, focusing on:
+
+- **True Positives (TP) and True Negatives (TN)**: Correctly identified cases of dementia and non-dementia.
+- **False Positives (FP) and False Negatives (FN)**: Misclassified cases, where FP indicates incorrectly predicted dementia and FN indicates missed dementia cases.
+
+From the confusion matrix, key metrics were calculated:
+
+1. **Accuracy**: The proportion of correctly classified instances out of the total instances.
+2. **Precision**: The ratio of true positives to the sum of true positives and false positives, indicating the model's accuracy in identifying positive cases.
+3. **Recall (Sensitivity)**: The ratio of true positives to the sum of true positives and false negatives, reflecting the model's ability to identify all actual positive cases.
+4. **F1-Score**: The harmonic mean of precision and recall, providing a single metric that balances both concerns.
+
+##### 4.2.3 Testing on "Live" Data
+
+Testing also involved evaluating the models on a "live" dataset, which included previously unseen data from the ADNI dataset. This testing phase aimed to:
+
+- **Validate Real-World Applicability**: Assessing how well the models perform on new, real-world data that they have not encountered during training.
+- **Performance Calibration**: Ensuring the models maintain accuracy and reliability when applied outside the controlled environment of the training dataset.
+
+##### 4.2.4 Performance Comparison Between Age Groups
+
+The models' performance was compared between the two age groups to identify any disparities in predictive accuracy:
+
+- **Group 1 (Age < 65)**: Metrics indicated how well the models could detect early-onset dementia.
+- **Group 2 (Age ≥ 65)**: Metrics evaluated the models' performance on the traditionally higher-risk age group for dementia.
+
+This comparison was crucial to understanding age-specific model strengths and weaknesses, contributing to a more nuanced application of machine learning in dementia prediction.
+
+#### 4.3 Implementation and Testing Results
+
+The testing phase yielded several insights into the models' performance:
+
+- **Overall Performance**: The Random Forest and Gradient Boosting models achieved the highest accuracy and F1-scores, demonstrating their effectiveness in handling complex data patterns.
+- **Age Group Performance**: Models generally performed better on Group 2 (Age ≥ 65), suggesting a stronger predictive ability for older individuals. However, the age group analysis revealed nuances that could inform future research, such as differing feature importance across age groups.
+- **Precision and Recall Trade-offs**: There was a noticeable trade-off between precision and recall across models, particularly in the SVM and MLP models, which tended to prioritise precision over recall.
+
+#### 4.4 Functional and User-Acceptance Testing
+
+Although the project primarily focuses on experimental and investigative aspects, functional and user-acceptance testing were considered in a broader context:
+
+- **Functional Testing**: Ensured that each component of the machine learning pipeline operated correctly, including data preprocessing, model training, and evaluation procedures. This testing phase involved verifying that models could be trained and evaluated without errors and that performance metrics were computed accurately.
+- **User-Acceptance Testing**: While not directly applicable in a traditional sense, user-acceptance testing was considered in terms of the models' practical applicability and interpretability. This involved assessing whether the models could be feasibly applied in a clinical setting, providing clear and actionable predictions for dementia diagnosis.
+
+#### 4.5 Summary
+
+The implementation phase effectively executed the methodological approach, involving comprehensive data preprocessing, model training, and evaluation. Testing employed rigorous validation techniques, including cross-validation and performance metrics analysis, ensuring the models' robustness and reliability. The evaluation on both standard and "live" datasets demonstrated the models' potential for real-world application in dementia prediction. Additionally, age group analysis provided valuable insights into age-specific predictive factors, contributing to a more nuanced understanding of the models' performance
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
